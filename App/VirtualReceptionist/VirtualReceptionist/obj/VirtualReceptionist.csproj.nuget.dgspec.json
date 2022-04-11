@@ -1,25 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PapKate\\Documents\\CEID\\ΤεχνολογίαΛογισμικού\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\VirtualReceptionist.csproj": {}
+    "C:\\Τεχνολογία_Λογισμικού_Github\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\VirtualReceptionist.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PapKate\\Documents\\CEID\\ΤεχνολογίαΛογισμικού\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\VirtualReceptionist.csproj": {
+    "C:\\Τεχνολογία_Λογισμικού_Github\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\VirtualReceptionist.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PapKate\\Documents\\CEID\\ΤεχνολογίαΛογισμικού\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\VirtualReceptionist.csproj",
+        "projectUniqueName": "C:\\Τεχνολογία_Λογισμικού_Github\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\VirtualReceptionist.csproj",
         "projectName": "VirtualReceptionist",
-        "projectPath": "C:\\Users\\PapKate\\Documents\\CEID\\ΤεχνολογίαΛογισμικού\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\VirtualReceptionist.csproj",
-        "packagesPath": "C:\\Users\\PapKate\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PapKate\\Documents\\CEID\\ΤεχνολογίαΛογισμικού\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\obj\\",
+        "projectPath": "C:\\Τεχνολογία_Λογισμικού_Github\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\VirtualReceptionist.csproj",
+        "packagesPath": "C:\\Users\\linos\\.nuget\\packages\\",
+        "outputPath": "C:\\Τεχνολογία_Λογισμικού_Github\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\PapKate\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\linos\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -74,7 +73,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Runtime.browser-wasm",
-              "version": "[5.0.14, 5.0.14]"
+              "version": "[5.0.15, 5.0.15]"
             }
           ],
           "frameworkReferences": {
@@ -82,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

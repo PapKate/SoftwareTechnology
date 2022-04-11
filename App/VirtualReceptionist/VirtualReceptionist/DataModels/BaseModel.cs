@@ -1,4 +1,6 @@
-﻿namespace VirtualReceptionist
+﻿using System;
+
+namespace VirtualReceptionist
 {
     /// <summary>
     /// The base model
