@@ -1,0 +1,43 @@
+﻿using System.Collections.Generic;
+
+namespace VirtualReceptionist
+{
+    public class Room
+    {
+        #region Public Properties
+
+        /// <summary>
+        /// A flag indicating whether it is occupied
+        /// </summary>
+        public bool IsOccupied { get; set; }
+
+        /// <summary>
+        /// The price per night
+        /// </summary>
+        public double Price { get; set; }
+
+        /// <summary>
+        /// The room's reviews
+        /// </summary>
+        public IEnumerable<RoomReview> RoomReviews { get; set; }
+
+        /// <summary>
+        /// The room check ins
+        /// </summary>
+        public IEnumerable<RoomCheckIn> RoomCheckIns { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public Room() : base()
+        {
+
+        }
+
+        #endregion
+    }
+}
