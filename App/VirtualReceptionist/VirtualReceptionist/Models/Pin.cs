@@ -1,16 +1,21 @@
 ﻿namespace VirtualReceptionist
 {
     /// <summary>
-    /// The standard model
+    /// Represents a PIN
     /// </summary>
-    public class StandardModel : BaseModel
+    public class Pin 
     {
         #region Public Properties
 
         /// <summary>
-        /// The name
+        /// The pin code
         /// </summary>
-        public string Name { get; set; }
+        public int Code { get; set; }
+
+        /// <summary>
+        /// A flag indicating whether the pin is active 
+        /// </summary>
+        public bool IsActive { get; set; }
 
         #endregion
 
@@ -19,8 +24,9 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public StandardModel() : base()
+        public Pin() : base()
         {
+
         }
 
         #endregion

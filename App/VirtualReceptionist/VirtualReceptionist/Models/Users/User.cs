@@ -3,26 +3,26 @@
 namespace VirtualReceptionist
 {
     /// <summary>
-    /// The base model
+    ///  Represents a user
     /// </summary>
-    public class BaseModel
+    public class User
     {
         #region Public Properties
 
         /// <summary>
-        /// The id
+        /// The pin
         /// </summary>
-        public int Id { get; set; }
+        public Pin Pin { get; set; }
 
         /// <summary>
-        /// The date the model was created
+        /// The phone
+        /// </summary>
+        public Phone Phone { get; set; }
+
+        /// <summary>
+        /// The date created
         /// </summary>
         public DateTime DateCreated { get; set; }
-
-        /// <summary>
-        /// The date the model was last modified
-        /// </summary>
-        public DateTime DateModified { get; set; }
 
         #endregion
 
@@ -31,7 +31,7 @@ namespace VirtualReceptionist
         /// <summary>
         /// Default constructor
         /// </summary>
-        public BaseModel() : base()
+        public User() : base()
         {
 
         }
