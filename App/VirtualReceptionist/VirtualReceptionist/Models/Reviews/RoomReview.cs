@@ -29,5 +29,24 @@ namespace VirtualReceptionist
         }
 
         #endregion
+
+        #region Public Methods
+
+        public RoomReview CreateRoomReview(RoomCheckIn roomCheckIn, string comments, IEnumerable<Review> reviews)
+        {
+            return new RoomReview();
+        }
+
+        public RoomReview EditRoomReview(RoomReview roomReview)
+        {
+            return new RoomReview();
+        }
+
+        public RoomReview DeleteRoomReview(RoomReview roomReview)
+        {
+            return new RoomReview();
+        }
+
+        #endregion
     }
 }

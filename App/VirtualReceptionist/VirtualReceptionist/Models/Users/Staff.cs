@@ -3,7 +3,7 @@
     /// <summary>
     ///  Represents a staff
     /// </summary>
-    public class StaffModel
+    public class Staff
     {
         #region Public Properties
 
@@ -34,9 +34,18 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public StaffModel() : base()
+        public Staff() : base()
         {
 
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public Staff CreateStaff(string firstName, string lastName, string email, Pin hotelPin, Pin staffPin)
+        {
+            return new Staff();
         }
 
         #endregion

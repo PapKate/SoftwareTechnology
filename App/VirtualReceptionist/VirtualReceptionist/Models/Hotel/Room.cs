@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace VirtualReceptionist
 {
@@ -36,6 +37,15 @@ namespace VirtualReceptionist
         public Room() : base()
         {
 
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public IEnumerable<Room> GetRooms(Pin hotelPin)
+        {
+            return Enumerable.Empty<Room>();
         }
 
         #endregion
