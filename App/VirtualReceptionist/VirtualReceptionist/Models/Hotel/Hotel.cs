@@ -38,7 +38,7 @@ namespace VirtualReceptionist
         /// <summary>
         /// The staff
         /// </summary>
-        public IEnumerable<StaffModel> Staff { get; set; }
+        public IEnumerable<Staff> Staff { get; set; }
 
         #endregion
 
