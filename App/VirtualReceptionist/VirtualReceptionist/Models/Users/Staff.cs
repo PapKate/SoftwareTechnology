@@ -3,7 +3,7 @@
     /// <summary>
     ///  Represents a staff
     /// </summary>
-    public class Staff
+    public class Staff : User
     {
         #region Public Properties
 
