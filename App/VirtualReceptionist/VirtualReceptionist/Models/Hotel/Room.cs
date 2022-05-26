@@ -3,14 +3,9 @@ using System.Linq;
 
 namespace VirtualReceptionist
 {
-    public class Room
+    public class Room : FloorArea
     {
         #region Public Properties
-
-        /// <summary>
-        /// A flag indicating whether it is occupied
-        /// </summary>
-        public bool IsOccupied { get; set; }
 
         /// <summary>
         /// The price per night
