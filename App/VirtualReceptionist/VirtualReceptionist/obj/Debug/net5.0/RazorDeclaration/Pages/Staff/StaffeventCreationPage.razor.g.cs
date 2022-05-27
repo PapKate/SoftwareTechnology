@@ -82,7 +82,7 @@ using VirtualReceptionist.Shared;
 #line default
 #line hidden
 #nullable disable
-    public partial class StaffeventCreationPage : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class StaffEventCreationPage : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)

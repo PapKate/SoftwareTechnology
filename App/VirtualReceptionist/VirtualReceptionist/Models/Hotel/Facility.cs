@@ -35,7 +35,7 @@ namespace VirtualReceptionist
         /// </summary>
         /// <param name="hotelPin">The hotel's unique pin</param>
         /// <returns></returns>
-        public IEnumerable<Facility> GetFacilities(Pin hotelPin)
+        public static IEnumerable<Facility> GetFacilities(Pin hotelPin)
         {
             // Gets the hotel from the hotels with pin the given pin
             var hotel = Data.Hotels.First(x => x.Pin == hotelPin);
@@ -51,9 +51,9 @@ namespace VirtualReceptionist
         /// Creates and returns a new facility
         /// </summary>
         /// <returns></returns>
-        public Facility CreateFacility(string name, Floor floor, Uri image, double area, uint capacity, bool isOccupied, string descripiton)
+        public static Facility CreateFacility(Pin hotelPin, string name, Floor floor, Uri image, double area, uint capacity, bool isOccupied, string descripiton)
         {
-            return new Facility()
+            var newFacility = new Facility()
             { 
                 Name = name,
                 Floor = floor,
@@ -62,7 +62,11 @@ namespace VirtualReceptionist
                 IsOccupied = isOccupied,
                 Description = descripiton,
                 Image = image,
-            }; 
+            };
+
+            AddFacility(newFacility, hotelPin);
+
+            return newFacility;
         }
 
         /// <summary>
@@ -70,7 +74,7 @@ namespace VirtualReceptionist
         /// </summary>
         /// <param name="facility"></param>
         /// <param name="hotelPin">The hotel's unique pin</param>
-        public void AddFacility(Facility facility, Pin hotelPin)
+        public static void AddFacility(Facility facility, Pin hotelPin)
         {
             // Gets the hotel from the hotels with pin the given pin
             var hotel = Data.Hotels.First(x => x.Pin == hotelPin);
