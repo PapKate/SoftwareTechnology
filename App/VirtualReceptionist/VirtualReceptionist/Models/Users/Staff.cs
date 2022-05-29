@@ -45,7 +45,10 @@
 
         public Staff CreateStaff(string firstName, string lastName, string email, Pin hotelPin, Pin staffPin)
         {
-            return new Staff();
+            return new Staff() 
+            {
+            
+            };
         }
 
         #endregion

@@ -78,13 +78,39 @@ namespace VirtualReceptionist
         #region Public Methods
 
         /// <summary>
+        /// Gets all the events of each hotel
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<Event> GetEvents()
+        {
+            // Gets all the facilities of the hotel
+            var facilities = Data.Hotels.SelectMany(x => x.Floors).SelectMany(x => x.Facilities).ToList();
+
+            // Gets all the events from all the facilities
+            var events = facilities.SelectMany(x => x.Events).ToList();
+
+            // Returns the events
+            return events;
+        }
+
+        /// <summary>
         /// Gets all the events
         /// </summary>
         /// <param name="hotelPin">The hotel's pin</param>
         /// <returns></returns>
         public IEnumerable<Event> GetEvents(Pin hotelPin)
         {
-            return Enumerable.Empty<Event>();
+            // Gets the hotel with the given pin
+            var hotel = Data.Hotels.First(x => x.Pin == hotelPin);
+
+            // Gets all the facilities of the hotel
+            var facilities = hotel.Floors.SelectMany(x => x.Facilities).ToList();
+
+            // Gets all the events from all the facilities
+            var events = facilities.SelectMany(x => x.Events).ToList();
+
+            // Returns the events
+            return events;
         }
 
         /// <summary>
