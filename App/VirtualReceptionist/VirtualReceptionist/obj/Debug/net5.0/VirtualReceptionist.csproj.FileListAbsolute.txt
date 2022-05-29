@@ -404,26 +404,18 @@ C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\Softwar
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\VirtualReceptionist.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\VirtualReceptionist.RazorComponent.input.cache
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\App.razor.g.cs
-C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\Pages\Counter.razor.g.cs
-C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\Pages\FetchData.razor.g.cs
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
-C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\Shared\MainLayout.razor.g.cs
-C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\Shared\NavMenu.razor.g.cs
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\VirtualReceptionist.RazorComponent.output.cache
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\VirtualReceptionist.dll
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\VirtualReceptionist.TagHelpers.input.cache
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\VirtualReceptionist.TagHelpers.output.cache
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\VirtualReceptionist.RazorCoreGenerate.cache
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\App.razor.g.cs
-C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Pages\Counter.razor.g.cs
-C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Pages\FetchData.razor.g.cs
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
-C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Shared\SurveyPrompt.razor.g.cs
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Shared\MainLayout.razor.g.cs
-C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Shared\NavMenu.razor.g.cs
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\build-gz\KxBcKCII.gz
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\build-gz\CzttVIEU.gz
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\build-gz\IwbOLAOq.gz
@@ -620,7 +612,6 @@ C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\Softwar
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\build-gz\Z7f2M0v5.gz
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\build-gz\jxaR1IJy.gz
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
-C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\scopedcss\bundle\VirtualReceptionist.styles.css
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\scopedcss\projectbundle\VirtualReceptionist.bundle.scp.css
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\staticwebassets\VirtualReceptionist.StaticWebAssets.Manifest.cache
@@ -1894,3 +1885,29 @@ C:\Users\maria\OneDrive - University of Patras\Επιφάνεια εργασία
 C:\Users\maria\OneDrive - University of Patras\Επιφάνεια εργασίας\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\scopedcss\projectbundle\VirtualReceptionist.bundle.scp.css
 C:\Users\maria\OneDrive - University of Patras\Επιφάνεια εργασίας\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\VirtualReceptionist.RazorTargetAssemblyInfo.cache
 C:\Users\maria\OneDrive - University of Patras\Επιφάνεια εργασίας\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\VirtualReceptionist.csproj.CopyComplete
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\Components\SideMenu.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\Pages\CustomerAndVisitorEventsPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\Pages\Customer\CustomerMyReservationsPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\Pages\Customer\CustomerMyRoomPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\Pages\Customer\CustomerPayments.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\Pages\LoginPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\Pages\Staff\StaffEventCheckInsPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\Pages\Staff\StaffeventCreationPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\Pages\Staff\StaffEventReservationsPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\Pages\Staff\StaffEventsPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\Pages\Staff\StaffRoomCheckInPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\Pages\Staff\StaffRoomsPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\Pages\Staff\StaffStatisticsPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Components\SideMenu.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Pages\CustomerAndVisitorEventsPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Pages\Customer\CustomerMyReservationsPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Pages\Customer\CustomerMyRoomPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Pages\Customer\CustomerPayments.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Pages\LoginPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Pages\Staff\StaffEventCheckInsPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Pages\Staff\StaffeventCreationPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Pages\Staff\StaffEventReservationsPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Pages\Staff\StaffEventsPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Pages\Staff\StaffRoomCheckInPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Pages\Staff\StaffRoomsPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Pages\Staff\StaffStatisticsPage.razor.g.cs

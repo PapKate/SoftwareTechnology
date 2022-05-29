@@ -31,11 +31,6 @@ namespace VirtualReceptionist
         public IEnumerable<Floor> Floors { get; set; }
 
         /// <summary>
-        /// The events
-        /// </summary>
-        public IEnumerable<Event> Events { get; set; }
-
-        /// <summary>
         /// The staff
         /// </summary>
         public IEnumerable<Staff> Staff { get; set; }
