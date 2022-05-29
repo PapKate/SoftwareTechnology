@@ -61,6 +61,16 @@ namespace VirtualReceptionist
         /// </summary>
         public TimeSpan Duration { get; set; }
 
+        /// <summary>
+        /// The event check ins
+        /// </summary>
+        public IEnumerable<EventChekcIn> EventCheckIns { get; set; }
+
+        /// <summary>
+        /// The event reservations
+        /// </summary>
+        public IEnumerable<EventReservation> EventReservations { get; set; }
+
         #endregion
 
         #region Constructors
@@ -128,6 +138,7 @@ namespace VirtualReceptionist
 
             var events = facility.Events.ToList();
 
+            // Adds the event
             events.Add(@event);
 
             facility.Events = events;
@@ -189,4 +200,5 @@ namespace VirtualReceptionist
         }
 
         #endregion
+    }
 }

@@ -66,14 +66,47 @@ namespace VirtualReceptionist
         /// <param name="numberOfGuests"></param>
         /// <param name="event"></param>
         /// <returns></returns>
-        public EventReservation CreateEventReservation(string firstName, string lastName, Phone phone, uint numberOfGuests, Event @event)
+        public static EventReservation CreateEventReservation(string firstName, string lastName, Phone phone, uint numberOfGuests, Event @event, Pin hotelPin)
         {
-            return new EventReservation();
+            var eventReservation = new EventReservation()
+            { 
+                FirstName = firstName,
+                LastName = lastName,    
+                Phone = phone,
+                NumberOfGuests = numberOfGuests,
+                Event = @event,
+                DateCreated = DateTime.Now
+            };
+
+            // Adds the reservation
+            AddEventReservation(hotelPin, eventReservation);
+
+            return eventReservation;
         }
 
-        public EventReservation AddEventReservation(EventReservation eventReservation)
+        /// <summary>
+        /// Adds an <paramref name="eventReservation"/> to the hotel with the given <paramref name="hotelPin"/>
+        /// </summary>
+        /// <param name="hotelPin"></param>
+        /// <param name="eventReservation"></param>
+        public static void AddEventReservation(Pin hotelPin, EventReservation eventReservation)
         {
-            return eventReservation;
+            // Gets the hotel from the hotels with pin the given pin
+            var hotel = Data.Hotels.First(x => x.Pin == hotelPin);
+
+            // Gets the floor where the facility needs to be added
+            var floor = hotel.Floors.First(x => x == eventReservation.Event.Facility.Floor);
+
+            var facility = floor.Facilities.First(x => x == eventReservation.Event.Facility);
+
+            var currentEvent = facility.Events.First(x => x == eventReservation.Event);
+
+            var eventReservations = currentEvent.EventReservations.ToList();
+
+            // Adds the event
+            eventReservations.Add(eventReservation);
+
+            currentEvent.EventReservations = eventReservations;
         }
 
         public IEnumerable<EventReservation> GetEventReservations()
