@@ -1911,3 +1911,5 @@ C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\Softwar
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Pages\Staff\StaffRoomCheckInPage.razor.g.cs
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Pages\Staff\StaffRoomsPage.razor.g.cs
 C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Pages\Staff\StaffStatisticsPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\RazorDeclaration\Pages\VisitorEventsPage.razor.g.cs
+C:\Users\PapKate\Documents\CEID\ΤεχνολογίαΛογισμικού\SoftwareTechnology\App\VirtualReceptionist\VirtualReceptionist\obj\Debug\net5.0\Razor\Pages\VisitorEventsPage.razor.g.cs

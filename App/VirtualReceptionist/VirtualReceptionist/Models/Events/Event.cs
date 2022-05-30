@@ -149,11 +149,12 @@ namespace VirtualReceptionist
         /// <returns></returns>
         public static IEnumerable<Event> GetEvents()
         {
+            var floors = Data.Hotels.SelectMany(x => x.Floors ?? Enumerable.Empty<Floor>()).ToList();
             // Gets all the facilities of the hotel
-            var facilities = Data.Hotels.SelectMany(x => x.Floors).SelectMany(x => x.Facilities).ToList();
+            var facilities = floors.SelectMany(x => x.Facilities ?? Enumerable.Empty<Facility>()).ToList();
 
             // Gets all the events from all the facilities
-            var events = facilities.SelectMany(x => x.Events).ToList();
+            var events = facilities.SelectMany(x => x.Events ?? Enumerable.Empty<Event>()).ToList();
 
             // Returns the events
             return events;
@@ -170,10 +171,10 @@ namespace VirtualReceptionist
             var hotel = Data.Hotels.First(x => x.Pin == hotelPin);
 
             // Gets all the facilities of the hotel
-            var facilities = hotel.Floors.SelectMany(x => x.Facilities).ToList();
+            var facilities = hotel.Floors.SelectMany(x => x.Facilities ?? Enumerable.Empty<Facility>()).ToList();
 
             // Gets all the events from all the facilities
-            var events = facilities.SelectMany(x => x.Events).ToList();
+            var events = facilities.SelectMany(x => x.Events ?? Enumerable.Empty<Event>()).ToList();
 
             // Returns the events
             return events;

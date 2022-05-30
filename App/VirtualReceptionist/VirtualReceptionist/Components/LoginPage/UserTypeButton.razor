@@ -1,0 +1,37 @@
+﻿@using static Constants
+
+@namespace VirtualReceptionist 
+
+<Button OnClick="@OnClick"
+             BoxShadow="@Atom.Blazor.Personalization.BoxShadow"
+             BorderRadius="1em"
+             BackColor="@BackColor">
+    <div class="userTypeButtonContainer">
+        <img class="userTypeImage" src="@Image" alt="background image"/>
+        <span>@Type</span>
+    </div>
+</Button>
+
+<style>
+    .userTypeButtonContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1em;
+        gap: 1em;
+        font-family: Calibri, sans-serif;
+        color: #@White;
+        font-weight: 600;
+        font-size: 160%;
+    }
+
+    .userTypeImage {
+        position: relative;
+        width: 280px;
+        height: 280px;
+    }
+</style>
