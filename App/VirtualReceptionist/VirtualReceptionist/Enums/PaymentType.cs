@@ -4,6 +4,7 @@
     {
         Visa,
         Mastercard,
-        Paypal
+        Paypal,
+        Cash
     }
 }

@@ -79,11 +79,6 @@
             return price * multiplier;
         }
 
-        public static void ShowPaymentDialog(double price)
-        {
-
-        }
-
         public static double SubmitPaymentWithCash(double price, double given)
         {
             return given - price;

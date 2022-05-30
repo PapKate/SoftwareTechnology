@@ -22,6 +22,11 @@ namespace VirtualReceptionist
         public Phone Phone { get; set; }
 
         /// <summary>
+        /// A flag indicating whether it is paid
+        /// </summary>
+        public bool IsPaid { get; set; }
+
+        /// <summary>
         /// The number of guests
         /// </summary>
         public uint NumberOfGuests { get; set; }
@@ -64,11 +69,32 @@ namespace VirtualReceptionist
         /// <param name="lastName"></param>
         /// <param name="phone"></param>
         /// <param name="numberOfGuests"></param>
+        /// <param name="isPaid"></param>
         /// <param name="event"></param>
         /// <returns></returns>
+<<<<<<< Updated upstream
         public EventReservation CreateEventReservation(string firstName, string lastName, Phone phone, uint numberOfGuests, Event @event)
         {
             return new EventReservation();
+=======
+        public static EventReservation CreateEventReservation(string firstName, string lastName, Phone phone, uint numberOfGuests, bool isPaid, Event @event, Pin hotelPin)
+        {
+            var eventReservation = new EventReservation()
+            { 
+                FirstName = firstName,
+                LastName = lastName,    
+                Phone = phone,
+                NumberOfGuests = numberOfGuests,
+                Event = @event,
+                IsPaid = isPaid,
+                DateCreated = DateTime.Now
+            };
+
+            // Adds the reservation
+            AddEventReservation(hotelPin, eventReservation);
+
+            return eventReservation;
+>>>>>>> Stashed changes
         }
 
         public EventReservation AddEventReservation(EventReservation eventReservation)
