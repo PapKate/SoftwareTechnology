@@ -124,6 +124,28 @@ namespace VirtualReceptionist.Pages
         }
 
         /// <summary>
+
+        /// Creates an unpaid reservation
+        /// </summary>
+        private void PaymentsFormNoButton_OnClick()
+        {
+            // Close the Payment dialog
+            // Creates the phone
+            var phone = new Phone() { CountryCode = mCountryCodeInputValue, PhoneNumber = mPhoneNumberInputValue };
+
+            var hotel = Data.Hotels.First(x => x.Floors.Any(x => x.Facilities.Any(x => x.Events.Contains(mEvent))));
+
+            EventReservation.CreateEventReservation(mFirstNameInputValue, mLaststNameInputValue, phone, mNumberOfGuestsInputValue, false, mEvent, hotel.Pin);
+
+            // Show the message
+            HelperMethods.ShowMessage(MessageType.Information, "Reservation created", "Your reservation has been created. Thank you!");
+
+            // Sends the text to the phone
+            HelperMethods.SendPhoneText(phone, $"Your reservation has been confirmed. Thank you from Sahara Resort!");
+        }
+
+        /// <summary>
+
         /// Shows the payments form
         /// </summary>
         private void ShowPaymentsForm()
@@ -151,7 +173,7 @@ namespace VirtualReceptionist.Pages
 
             var hotel = Data.Hotels.First(x => x.Floors.Any(x => x.Facilities.Any(x => x.Events.Contains(mEvent))));
 
-            EventReservation.CreateEventReservation(mFirstNameInputValue, mLaststNameInputValue, phone, mNumberOfGuestsInputValue, mEvent, hotel.Pin);
+            EventReservation.CreateEventReservation(mFirstNameInputValue, mLaststNameInputValue, phone, mNumberOfGuestsInputValue, true, mEvent, hotel.Pin);
 
             // Show the message
             HelperMethods.ShowMessage(MessageType.Information, "Successful Payment", "Your transaction has been completed and your reservation created. Thank you!");
