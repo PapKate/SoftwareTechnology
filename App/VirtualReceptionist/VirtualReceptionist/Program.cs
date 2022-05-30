@@ -1,3 +1,5 @@
+using Atom;
+
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,10 +19,21 @@ namespace VirtualReceptionist
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
+            
+            // Add the routes used 
+            builder.Services.AddSingleton<BlazorPagesPaths>();
 
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            Framework.Construct<HostedFrameworkConstruction>();
 
-            await builder.Build().RunAsync();
+            Framework.Construction.UseHostedServices(builder.Services)
+                .AddConfiguration(builder.Configuration);
+
+            var webAssemblyHost = builder.Build();
+
+            Framework.Construction.Build(webAssemblyHost.Services);
+
+            // Build the client application
+            await webAssemblyHost.RunAsync();
         }
     }
 }
