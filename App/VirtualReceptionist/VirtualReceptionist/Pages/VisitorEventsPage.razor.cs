@@ -124,6 +124,7 @@ namespace VirtualReceptionist.Pages
         }
 
         /// <summary>
+
         /// Creates an unpaid reservation
         /// </summary>
         private void PaymentsFormNoButton_OnClick()
@@ -144,6 +145,7 @@ namespace VirtualReceptionist.Pages
         }
 
         /// <summary>
+
         /// Shows the payments form
         /// </summary>
         private void ShowPaymentsForm()

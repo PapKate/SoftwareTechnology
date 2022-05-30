@@ -1,4 +1,6 @@
-﻿namespace VirtualReceptionist
+﻿using System;
+
+namespace VirtualReceptionist
 {
     /// <summary>
     /// Contains helper methods
@@ -69,11 +71,23 @@
 
         #region Payments
 
-        public static void ThirdPartyPayment(PaymentType type)
+        public static bool ThirdPartyPayment(PaymentType type, double price)
         {
+            // Third party
+            
+            var random = new Random();
+            if(random.Next(2) == 1)
+                return true;
 
+            return false;
         }
 
+        /// <summary>
+        /// Calculates the total price
+        /// </summary>
+        /// <param name="price"></param>
+        /// <param name="multiplier"></param>
+        /// <returns></returns>
         public static double CalculateTotalPrice(double price, uint multiplier)
         {
             return price * multiplier;

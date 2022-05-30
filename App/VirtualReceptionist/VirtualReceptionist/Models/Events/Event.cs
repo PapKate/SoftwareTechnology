@@ -61,6 +61,16 @@ namespace VirtualReceptionist
         /// </summary>
         public TimeSpan Duration { get; set; }
 
+        /// <summary>
+        /// The event check ins
+        /// </summary>
+        public IEnumerable<EventChekcIn> EventCheckIns { get; set; }
+
+        /// <summary>
+        /// The event reservations
+        /// </summary>
+        public IEnumerable<EventReservation> EventReservations { get; set; }
+
         #endregion
 
         #region Constructors
@@ -78,13 +88,95 @@ namespace VirtualReceptionist
         #region Public Methods
 
         /// <summary>
+        /// Creates and returns an event
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="description"></param>
+        /// <param name="maxNumberOfGuests"></param>
+        /// <param name="price"></param>
+        /// <param name="image"></param>
+        /// <param name="pin"></param>
+        /// <param name="facility"></param>
+        /// <param name="dateStart"></param>
+        /// <param name="duration"></param>
+        /// <returns></returns>
+        public static Event CreateEvent(Pin hotelPin, string name, string description, uint maxNumberOfGuests, double price, Uri image, Pin pin, Facility facility, DateTime dateStart, TimeSpan duration, bool isPrivate = false)
+        {
+            var newEvent = new Event()
+            {
+                Name = name,
+                DateStart = dateStart,
+                Description = description,
+                Price = price,
+                Duration = duration,
+                Facility = facility,
+                Image = image,
+                Pin = pin,
+                IsPrivate = isPrivate,
+                MaxNumberOfGuests = maxNumberOfGuests
+            };
+
+            AddEvent(newEvent, hotelPin);
+
+            return newEvent;
+        }
+
+        /// <summary>
+        /// Adds an event to the hotel with pin the given pin
+        /// </summary>
+        /// <param name="event"></param>
+        /// <param name="hotelPin"></param>
+        public static void AddEvent(Event @event, Pin hotelPin)
+        {
+            // Gets the hotel from the hotels with pin the given pin
+            var hotel = Data.Hotels.First(x => x.Pin == hotelPin);
+
+            // Gets the floor where the facility needs to be added
+            var floor = hotel.Floors.First(x => x == @event.Facility.Floor);
+
+            var facility = floor.Facilities.First(x => x == @event.Facility);
+
+            var events = facility.Events.ToList();
+
+            // Adds the event
+            events.Add(@event);
+
+            facility.Events = events;
+        }
+
+        /// Gets all the events of each hotel
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<Event> GetEvents()
+        {
+            // Gets all the facilities of the hotel
+            var facilities = Data.Hotels.SelectMany(x => x.Floors).SelectMany(x => x.Facilities).ToList();
+
+            // Gets all the events from all the facilities
+            var events = facilities.SelectMany(x => x.Events).ToList();
+
+            // Returns the events
+            return events;
+        }
+
+        /// <summary>
         /// Gets all the events
         /// </summary>
         /// <param name="hotelPin">The hotel's pin</param>
         /// <returns></returns>
         public IEnumerable<Event> GetEvents(Pin hotelPin)
         {
-            return Enumerable.Empty<Event>();
+            // Gets the hotel with the given pin
+            var hotel = Data.Hotels.First(x => x.Pin == hotelPin);
+
+            // Gets all the facilities of the hotel
+            var facilities = hotel.Floors.SelectMany(x => x.Facilities).ToList();
+
+            // Gets all the events from all the facilities
+            var events = facilities.SelectMany(x => x.Events).ToList();
+
+            // Returns the events
+            return events;
         }
 
         /// <summary>
