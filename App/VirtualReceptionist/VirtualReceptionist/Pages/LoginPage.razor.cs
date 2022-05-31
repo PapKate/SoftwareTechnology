@@ -307,6 +307,18 @@ namespace VirtualReceptionist
             NavigationManager.Visitor_NavigateToEventsPage();
         }
 
+        private void Customer_OnClick()
+        {
+            GlobalData.UserType = UserType.Customer;
+            NavigationManager.Customer_NavigateToMyRoomPage();
+        }
+
+        private void Staff_OnClick()
+        {
+            GlobalData.UserType = UserType.Staff;
+            NavigationManager.Staff_NavigateToRoomsPage();
+        }
+
         #endregion
     }
 }

@@ -1,5 +1,87 @@
-﻿<h3>SideMenu</h3>
+﻿@using static VirtualReceptionist.Constants
 
-@code {
+@namespace VirtualReceptionist
 
-}
+<div class="sideMenuContainer" style="width: 250px; background-color:#@White;">
+
+    @if (GlobalData.UserType == UserType.Visitor)
+    {
+        foreach (var pair in mVisitorIconTitlePairs)
+        {
+            <div class="sideMenuButtonWrapper">
+                <MenuButton BackColor="@White"
+                    ForeColor="@Gray"
+                    VectorSource="@pair.Value"
+                    Text="@pair.Key"
+                    OnClick="@(() => NavigateTo(pair.Key))" />
+            </div>
+        }
+    }
+    else if(GlobalData.UserType == UserType.Customer)
+    {
+        foreach (var pair in mCustomerIconTitlePairs)
+        {
+            <div class="sideMenuButtonWrapper">
+                <MenuButton BackColor="@White"
+                    ForeColor="@Gray"
+                    VectorSource="@pair.Value"
+                    Text="@pair.Key"
+                    OnClick="@(() => NavigateTo(pair.Key))" />
+            </div>
+        }
+    }
+    else if(GlobalData.UserType == UserType.Staff)
+    {
+        foreach (var pair in mStaffIconTitlePairs)
+        {
+            <div class="sideMenuButtonWrapper">
+                <MenuButton BackColor="@White"
+                    ForeColor="@Gray"
+                    VectorSource="@pair.Value"
+                    Text="@pair.Key"
+                    OnClick="@(() => NavigateTo(pair.Key))" />
+            </div>
+        }
+    }
+
+    
+    <div class="sideMenuButtonWrapper logOutButtonWrapper">
+        <MenuButton BackColor="@White"
+                    ForeColor="@Gray"
+                    VectorSource="@ExitRunPath"
+                    Text="Exit"
+                    OnClick="@(() => NavigateTo("LogOut"))" />
+    </div>
+
+</div>
+
+
+<style>
+
+    .sideMenuContainer{
+        position: sticky;
+        top:0;
+        left:0;
+        height: fit-content;
+        min-height: calc(100vh - 4rem);
+        display:flex;
+        flex-direction:column;
+        justify-content: flex-start;
+        align-items:flex-start;
+        z-index: 2;
+        box-shadow: @Atom.Blazor.Personalization.BoxShadow;
+        width:260px;
+    }
+
+    .sideMenuButtonWrapper {
+        position: relative;
+        height: 60px;
+        width: 100%;
+    }
+
+    .logOutButtonWrapper{
+        position: absolute;
+        bottom:0;
+    }
+
+</style>
