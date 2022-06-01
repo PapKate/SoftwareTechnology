@@ -293,8 +293,7 @@ namespace VirtualReceptionist
                 floors1.ForEach(x => x.Hotel = hotels.First());
                 floors2.ForEach(x => x.Hotel = hotels.Last());
 
-                hotels.First().Floors = floors1;
-                hotels.Last().Floors = floors2;
+                hotels.First().Floors = floors1;                hotels.Last().Floors = floors2;
 
                 Data.Hotels = hotels;
                 Data.Events = events;   
