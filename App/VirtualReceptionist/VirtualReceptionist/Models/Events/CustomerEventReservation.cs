@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,7 +15,7 @@ namespace VirtualReceptionist
         /// <summary>
         /// The customer
         /// </summary>
-        public Customer Customer { get; set; }
+        public CustomerUser Customer { get; set; }
 
         #endregion
 
@@ -42,23 +43,37 @@ namespace VirtualReceptionist
         /// <param name="event"></param>
         /// <param name="customer"></param>
         /// <returns></returns>
-        public static CustomerEventReservation CreateEventReservation(string firstName, string lastName, Phone phone, uint numberOfGuests, Event @event, Customer customer)
+
+        public static CustomerEventReservation CreateEventReservation(string firstName, string lastName, Phone phone, uint numberOfGuests, bool isPaid, Event @event, Pin hotelPin, CustomerUser customer)
+
         {
-            return new CustomerEventReservation();
+            var eventReservation = new CustomerEventReservation()
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                Phone = phone,
+                NumberOfGuests = numberOfGuests,
+                Event = @event,
+                IsPaid = isPaid,
+                DateCreated = DateTime.Now
+            };
+
+            // Adds the reservation
+            AddEventReservation(hotelPin, eventReservation);
+
+            return eventReservation;
+        }
+        
+        public static IEnumerable<CustomerEventReservation> GetCustomerReservations(CustomerUser customer)
+        {
+            return customer.CustomerEventReservations;
         }
 
-        public static void AddCustomerEventReservation(CustomerEventReservation customerEventReservation)
-        {
-        }
 
-        public static IEnumerable<CustomerEventReservation> GetCustomerReservations(Customer customer)
-        {
-            return Enumerable.Empty<CustomerEventReservation>();
-        }
+        public static IEnumerable<CustomerEventReservation> GetCustomerUnpaidReservations(CustomerUser customer)
 
-        public static IEnumerable<CustomerEventReservation> GetCustomerUnpaidReservations(Customer customer)
         {
-            return Enumerable.Empty<CustomerEventReservation>();
+            return customer.CustomerEventReservations.Where(x => x.IsPaid == false).ToList();
         }
 
         #endregion
