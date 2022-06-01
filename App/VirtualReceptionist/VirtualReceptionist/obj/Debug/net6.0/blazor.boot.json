@@ -213,13 +213,13 @@
       "Atom.Blazor.Controls.dll": "sha256-I5l\/mkeAA8kPkDy7VqNJOv39GLSICXOXCgD06wcunkg=",
       "Atom.Blazor.dll": "sha256-QXZimbC1mHMMC8Tz+9SKzZ0TeE6\/P\/Perw3Nb4aaDbg=",
       "Atom.dll": "sha256-a50JcvO28BPxY43eSY1j483\/B3kvXsDYpPZbeeT+6w4=",
-      "VirtualReceptionist.dll": "sha256-Cord9YR7HLGHlxLIR7IWYQWQMsuozOq1PZuNFc+FaPg="
+      "VirtualReceptionist.dll": "sha256-3CW9Tb+CUXRo+UKJR6rLk0gmgHB9ABndxIpNeNq\/5wA="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "VirtualReceptionist.pdb": "sha256-KZZk8ff4DvzL4NLUuhpxigkvZUhFlGvG5TPOEB\/c7mg="
+      "VirtualReceptionist.pdb": "sha256-6e3Vg8ZfRaZRKeCaVWJfqq536\/jlFeGxGmWh2w8zj2o="
     },
     "runtime": {
       "dotnet.6.0.2.tc6co0di20.js": "sha256-wbTVn69TU0+WI83iB+kky8tf\/BjZdYJeM0rUP96ur\/c=",

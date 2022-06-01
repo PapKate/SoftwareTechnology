@@ -121,9 +121,16 @@ namespace VirtualReceptionist
             currentEvent.EventReservations = eventReservations;
         }
 
-        public IEnumerable<EventReservation> GetEventReservations()
+        /// <summary>
+        /// Gets the reservations of the hotel with the given <paramref name="hotelPin"/>
+        /// </summary>
+        /// <param name="hotelPin"></param>
+        /// <returns></returns>
+        public static IEnumerable<EventReservation> GetEventReservations(Pin hotelPin)
         {
-            return Enumerable.Empty<EventReservation>();
+            var hotel = Data.Hotels.First(x => x.Pin == hotelPin);
+
+            return hotel.Floors.SelectMany(x => x.Facilities).SelectMany(x => x.Events).SelectMany(x => x.EventReservations);
         }
 
         #endregion
