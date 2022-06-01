@@ -103,7 +103,7 @@ namespace VirtualReceptionist
                     {
                         FirstName = "Κωνσταντίνα",
                         LastName = "Ρο",
-                        Email = "lightBlue@gmail.com",
+                        Email = "LightBlue@gmail.com",
                         Pin = new Pin()
                         {
                             Code = 24082000,
@@ -264,6 +264,7 @@ namespace VirtualReceptionist
                         Description = "Gather up your pals for a 6.00 pm arrival where you'll enjoy grazing on a sumptuous two-course meal together in The Lounge. Once your appetite has been pleasantly satisfied, make your way to The Relaxation Burrow as your private DJ will be hitting the decks from 18.00pm to 11.30pm.",
                         Facility = facilities.First(x => x.Name == "Main Pool"),
                         Price = 50,
+                        Image = "./images/poolParty.jpg",
                         MaxNumberOfGuests = 1000,
                         DateStart = new DateTime(2022, 05, 29),
                         Duration = new TimeSpan(8, 0, 0),
@@ -286,8 +287,15 @@ namespace VirtualReceptionist
                 floors.First(x => x.Level == 2).Facilities = facilities.Where(x => x.Name == "Conference Room").ToList();
                 floors.First(x => x.Level == 3).Facilities = facilities.Where(x => x.Name == "Roof Garden").ToList();
 
-                hotels.First().Floors = floors;
-                hotels.Last().Floors = floors;
+                var floors1 = floors;
+                var floors2 = floors;
+
+                floors1.ForEach(x => x.Hotel = hotels.First());
+                floors2.ForEach(x => x.Hotel = hotels.Last());
+
+                hotels.First().Floors = floors1;
+                hotels.Last().Floors = floors2;
+
                 Data.Hotels = hotels;
                 Data.Events = events;   
                 Data.Staff = staff;
@@ -305,6 +313,18 @@ namespace VirtualReceptionist
         {
             GlobalData.UserType = UserType.Visitor;
             NavigationManager.Visitor_NavigateToEventsPage();
+        }
+
+        private void Customer_OnClick()
+        {
+            GlobalData.UserType = UserType.Customer;
+            NavigationManager.Customer_NavigateToMyRoomPage();
+        }
+
+        private void Staff_OnClick()
+        {
+            GlobalData.UserType = UserType.Staff;
+            NavigationManager.Staff_NavigateToRoomsPage();
         }
 
         #endregion

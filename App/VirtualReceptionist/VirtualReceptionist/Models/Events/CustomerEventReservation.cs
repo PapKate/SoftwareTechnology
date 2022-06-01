@@ -43,7 +43,9 @@ namespace VirtualReceptionist
         /// <param name="event"></param>
         /// <param name="customer"></param>
         /// <returns></returns>
+
         public static CustomerEventReservation CreateEventReservation(string firstName, string lastName, Phone phone, uint numberOfGuests, bool isPaid, Event @event, Pin hotelPin, CustomerUser customer)
+
         {
             var eventReservation = new CustomerEventReservation()
             {
@@ -60,15 +62,16 @@ namespace VirtualReceptionist
             AddEventReservation(hotelPin, eventReservation);
 
             return eventReservation;
-
         }
-
+        
         public static IEnumerable<CustomerEventReservation> GetCustomerReservations(CustomerUser customer)
         {
             return customer.CustomerEventReservations;
         }
 
+
         public static IEnumerable<CustomerEventReservation> GetCustomerUnpaidReservations(CustomerUser customer)
+
         {
             return customer.CustomerEventReservations.Where(x => x.IsPaid == false).ToList();
         }

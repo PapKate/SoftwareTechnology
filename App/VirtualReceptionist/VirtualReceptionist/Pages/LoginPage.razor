@@ -25,13 +25,13 @@
                 <UserTypeButton BackColor="@Gray"
                                 Type="UserType.Customer"
                                 Image="./images/female1.png"
-                                OnClick="@(() => GlobalData.UserType = UserType.Customer)"/>
+                                OnClick="@(() => Customer_OnClick())"/>
             </div>
             <div class="userTypeButton">
                 <UserTypeButton BackColor="@Blue"
                                 Type="UserType.Staff"
                                 Image="./images/male2.png"
-                                OnClick="@(() => GlobalData.UserType  = UserType.Staff)"/>
+                                OnClick="@(() => Staff_OnClick())"/>
             </div>
         </div>
     </div>
