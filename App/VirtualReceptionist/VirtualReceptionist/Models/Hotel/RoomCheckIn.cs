@@ -17,7 +17,7 @@ namespace VirtualReceptionist
         /// <summary>
         /// The customer
         /// </summary>
-        public Customer Customer { get; set; }
+        public CustomerUser Customer { get; set; }
 
         /// <summary>
         /// The number of guests
@@ -33,6 +33,16 @@ namespace VirtualReceptionist
         /// The date the check in was created
         /// </summary>
         public DateTime DateCreated { get; set; }
+
+        /// <summary>
+        /// The date the check out was created
+        /// </summary>
+        public DateTime DateEnded { get; set; }
+
+        /// <summary>
+        /// A flag indicating whether it is paid
+        /// </summary>
+        public bool IsPaid { get; set; }
 
         #endregion
 

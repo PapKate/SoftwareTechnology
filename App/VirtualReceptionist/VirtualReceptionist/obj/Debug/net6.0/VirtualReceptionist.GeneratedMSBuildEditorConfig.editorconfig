@@ -70,8 +70,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhZmZcU3RhZmZFdmVudENoZWNrSW5zUGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Pages/Staff/StaffEventCreationPage.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhZmZcU3RhZmZFdmVudENyZWF0aW9uUGFnZS5yYXpvcg==
+[C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Pages/Staff/StaffeventCreationPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhZmZcU3RhZmZldmVudENyZWF0aW9uUGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Pages/Staff/StaffEventReservationsPage.razor]
@@ -84,6 +84,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Pages/Staff/StaffRoomCheckInPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhZmZcU3RhZmZSb29tQ2hlY2tJblBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Pages/Staff/StaffRoomPaymentsPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhZmZcU3RhZmZSb29tUGF5bWVudHNQYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Pages/Staff/StaffRoomsPage.razor]
