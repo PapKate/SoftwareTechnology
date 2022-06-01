@@ -1,0 +1,219 @@
+﻿@using static VirtualReceptionist.Constants
+
+@namespace VirtualReceptionist
+
+@if(Model != null)
+{
+    <div class="serviceContainer" style="@(IsPreview ? string.Empty : $"border-radius: 8px; filter: drop-shadow(1px 1px 3px #{Lavender});") " 
+         @onclick="EventClicked" @oncontextmenu="EventClicked" @oncontextmenu:preventDefault="true">
+    
+        <div class="serviceImage serviceDefaultIcon" style="@mDefaultIconStyle">
+            <div class="serviceImageSVG" style="height:88%; width:fit-content;">
+                <VectorIcon Color="@Lavender" VectorSource="@FireworkPath"/>
+            </div>
+        </div>
+        <img class="serviceImage" src="@Model.Image" alt="@Model.Name" style="@mImageStyle" @onerror="OnImageError"/>
+    
+        <div class="serviceImageOverlay"></div>
+        <div class="serviceInformationContainer ">
+            <h2 class="serviceName serviceText ">@Model.Name</h2>
+        
+            <p class="serviceDescription serviceText">@Model.Description</p>
+        
+            <h1 class="serviceTimeSpan serviceText ">@Model.DateStart.ToString("dd/MM/yyyy")</h1>
+            <h1 class="serviceTimeSpan serviceText " style="font-size:36px;">@Model.DateStart.ToShortTimeString() - @(Model.DateStart.Add(Model.Duration).ToShortTimeString()) </h1>
+            <h1 class="serviceTimeSpan serviceText ">@Model.Price.ToLocalizedCurrency()</h1>
+
+            <div class="serviceCustomersPresenceContainer">
+                <div style="display: flex; flex-direction:column; width: 100%;">
+                    <span class="serviceText serviceRoomText">@Model.Facility?.Floor?.Hotel?.Name</span>
+                    <span class="serviceText serviceRoomText">@Model.Facility?.Name</span>
+                </div>
+                <div class="serviceCustomerPresenceData">
+                    <div class="serviceInfo">
+                        <div class="serviceInfoData">
+                            @if (Model.IsPrivate)
+                            {
+                                <div class="serviceInfoIcon">
+                                    <VectorIcon Color="@White" VectorSource="@LockPath" />
+                                </div>
+                            }
+                            <span class="serviceCapacity serviceText "> @(Model.EventCheckIns?.Count() ?? 0) / @Model.MaxNumberOfGuests </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<style>
+
+    .serviceContainer
+    {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        justify-self: center;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .serviceImage
+    {
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        grid-column-start: 1;
+        grid-row: 1;
+    }
+
+    .serviceDefaultIcon{
+        background-color:#@Gray; 
+        display:none; 
+        align-items:center; 
+        justify-content:center;
+    }
+
+    .serviceImageOverlay {
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        background: rgba(0,0,0,0.2);
+        grid-column-start: 1;
+        grid-row: 1;
+    }
+
+    .serviceProgressOverlay {
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        grid-column-start: 1;
+        grid-row: 1;
+    }
+
+    .serviceInformationContainer
+    {
+        grid-column-start: 1;
+        grid-row: 1;
+        position: relative;
+        height: 95%;
+        margin: 2% 3%;
+        padding-bottom: 2rem;
+        color: #@White;
+    }
+
+    .serviceText
+    {
+        font-family: Calibri,  sans-serif;
+        margin: 0;
+    }
+
+    .serviceName
+    {
+        font-size: 44px;
+        margin: 0;
+        top: 0;
+    }
+
+    .serviceDescription {
+        font-size: 20px;
+        width: 100%;
+    }
+
+    .serviceWorkoutDuration {
+        font-size: 40px;
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+
+    .serviceTimeSpan {
+        text-align: center;
+        font-size: 44px;
+    }
+
+    .serviceCustomersPresenceContainer
+    {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-end;
+        margin: 0;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .serviceCustomerPresenceData {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-end;
+        width: 100%;
+    }
+
+    .serviceCapacity
+    {
+        margin: 0;
+    }
+
+    .serviceInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        position: relative;
+    }
+
+    .serviceInfoData {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding-bottom: 4px;
+    }
+
+    .serviceInfoIcon{
+        height: 24px;
+        padding: 0 4px;
+        position:relative;
+    }
+
+    .serviceRoomText {
+        font-size: 120%;
+        font-weight: 600;
+        width: 100%;
+    }
+
+    .presentUserImageContainer {
+        width: 5%;
+        margin: 0 1%;
+    }
+
+    .presentUserImage
+    {
+        width: 100%;
+        border-radius: 50%;
+    }
+
+    .restOfTheUsersContainer
+    {
+        position: relative;
+        text-align: center;
+    }
+
+    .restOfTheUsersText
+    {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 90%;
+        text-align: center;
+    }
+
+ 
+</style>

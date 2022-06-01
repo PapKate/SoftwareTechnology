@@ -14,7 +14,7 @@ namespace VirtualReceptionist
         /// <summary>
         /// The image
         /// </summary>
-        public Uri Image { get; set; }
+        public string Image { get; set; }
 
         /// <summary>
         /// The facility
@@ -100,7 +100,7 @@ namespace VirtualReceptionist
         /// <param name="dateStart"></param>
         /// <param name="duration"></param>
         /// <returns></returns>
-        public static Event CreateEvent(Pin hotelPin, string name, string description, uint maxNumberOfGuests, double price, Uri image, Pin pin, Facility facility, DateTime dateStart, TimeSpan duration, bool isPrivate = false)
+        public static Event CreateEvent(Pin hotelPin, string name, string description, uint maxNumberOfGuests, double price, string image, Pin pin, Facility facility, DateTime dateStart, TimeSpan duration, bool isPrivate = false)
         {
             var newEvent = new Event()
             {

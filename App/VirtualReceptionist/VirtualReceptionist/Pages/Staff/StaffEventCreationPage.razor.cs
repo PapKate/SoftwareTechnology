@@ -134,11 +134,8 @@ namespace VirtualReceptionist.Pages.Staff
                 return;
             }
 
-            // Creates the event's image
-            var eventImage = new Uri(mImageInputValue);
-
             // Create the event
-            var newEvent = Event.CreateEvent(HotelPin, mNameInputValue, mDescripitonInputValue,mMaxNumberOfGuestsInputValue,mPriceInputValue,eventImage, eventPin, facility, mDateStartInputValue, mDurationValue, mIsPrivateInputValue);
+            var newEvent = Event.CreateEvent(HotelPin, mNameInputValue, mDescripitonInputValue,mMaxNumberOfGuestsInputValue,mPriceInputValue, mImageInputValue, eventPin, facility, mDateStartInputValue, mDurationValue, mIsPrivateInputValue);
 
             // Add the event 
             Event.AddEvent(newEvent, HotelPin);

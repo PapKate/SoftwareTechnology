@@ -29,6 +29,11 @@ namespace VirtualReceptionist
         /// </summary>
         public IEnumerable<Facility> Facilities { get; set; }
 
+        /// <summary>
+        /// The hotel
+        /// </summary>
+        public Hotel Hotel { get; set; }
+
         #endregion
 
         #region Constructors

@@ -42,22 +42,21 @@ namespace VirtualReceptionist
         /// <param name="event"></param>
         /// <param name="customer"></param>
         /// <returns></returns>
-        public CustomerEventReservation CreateEventReservation(string firstName, string lastName, Phone phone, uint numberOfGuests, Event @event, Customer customer)
+        public static CustomerEventReservation CreateEventReservation(string firstName, string lastName, Phone phone, uint numberOfGuests, Event @event, Customer customer)
         {
             return new CustomerEventReservation();
         }
 
-        public CustomerEventReservation AddCustomerEventReservation(CustomerEventReservation customerEventReservation)
+        public static void AddCustomerEventReservation(CustomerEventReservation customerEventReservation)
         {
-            return new CustomerEventReservation();
         }
 
-        public IEnumerable<CustomerEventReservation> GetCustomerReservations(Customer customer)
+        public static IEnumerable<CustomerEventReservation> GetCustomerReservations(Customer customer)
         {
             return Enumerable.Empty<CustomerEventReservation>();
         }
 
-        public IEnumerable<CustomerEventReservation> GetCustomerUnpaidReservations(Customer customer)
+        public static IEnumerable<CustomerEventReservation> GetCustomerUnpaidReservations(Customer customer)
         {
             return Enumerable.Empty<CustomerEventReservation>();
         }

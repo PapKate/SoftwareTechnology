@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Atom.Blazor.Controls;
+
+using Microsoft.AspNetCore.Components;
+
+using System.Collections.Generic;
 using System.Linq;
 
 namespace VirtualReceptionist.Pages
@@ -21,6 +25,13 @@ namespace VirtualReceptionist.Pages
         private Event mEvent;
         private double mPrice;
         private PaymentType mPaymentMethodInputValue = PaymentType.Paypal;
+
+        #endregion
+
+        #region Protected Properties
+
+        [Inject]
+        protected IDialogsManager DialogsManager { get; set; }
 
         #endregion
 
@@ -47,24 +58,28 @@ namespace VirtualReceptionist.Pages
             mEvents = Event.GetEvents();
         }
 
-        #endregion
-
-        #region Private Methods
-
         /// <summary>
         /// Opens the form for an event reservation
         /// </summary>
         /// <param name="event">The event</param>
-        private void OpenEventReservationForm(Event @event)
+        protected async void OpenEventReservationForm(Event @event)
         {
             mEvent = @event;
             // Show form
+            await DialogHelpers.ShowPreviewDialogAsync<EventPreviewDialog>(null, null, null, x =>
+            {
+                x.Style = "padding: 0;";
+                x.Configure = y =>
+                {
+                    y.Model = mEvent;
+                };
+            });
         }
 
         /// <summary>
         /// Save the event reservation
         /// </summary>
-        private void EventReservationFormSaveButton_OnClick()
+        protected void EventReservationFormSaveButton_OnClick()
         {
             // If there is at least an empty input...
             if (string.IsNullOrEmpty(mFirstNameInputValue)
@@ -103,7 +118,7 @@ namespace VirtualReceptionist.Pages
         /// <summary>
         /// Cancels a reservation
         /// </summary>
-        private void CancelButton_OnClick()
+        protected void CancelButton_OnClick()
         {
             mEvent = null;
             mFirstNameInputValue = string.Empty;
@@ -114,41 +129,9 @@ namespace VirtualReceptionist.Pages
         }
 
         /// <summary>
-        /// Confirms and shows the payment form
-        /// </summary>
-        private void PaymentsFormYesButton_OnClick()
-        {
-            // Close the Payment dialog
-
-            // Opens the payment form
-        }
-
-        /// <summary>
-
-        /// Creates an unpaid reservation
-        /// </summary>
-        private void PaymentsFormNoButton_OnClick()
-        {
-            // Close the Payment dialog
-            // Creates the phone
-            var phone = new Phone() { CountryCode = mCountryCodeInputValue, PhoneNumber = mPhoneNumberInputValue };
-
-            var hotel = Data.Hotels.First(x => x.Floors.Any(x => x.Facilities.Any(x => x.Events.Contains(mEvent))));
-
-            EventReservation.CreateEventReservation(mFirstNameInputValue, mLaststNameInputValue, phone, mNumberOfGuestsInputValue, false, mEvent, hotel.Pin);
-
-            // Show the message
-            HelperMethods.ShowMessage(MessageType.Information, "Reservation created", "Your reservation has been created. Thank you!");
-
-            // Sends the text to the phone
-            HelperMethods.SendPhoneText(phone, $"Your reservation has been confirmed. Thank you from Sahara Resort!");
-        }
-
-        /// <summary>
-
         /// Shows the payments form
         /// </summary>
-        private void ShowPaymentsForm()
+        protected void ShowPaymentsForm()
         {
             // Calculates the total price for the event reservation
             mPrice = HelperMethods.CalculateTotalPrice(mEvent.Price, mNumberOfGuestsInputValue);
@@ -156,12 +139,12 @@ namespace VirtualReceptionist.Pages
             // Show form
         }
 
-        private void GoToThirdPartyPayment()
+        protected void GoToThirdPartyPayment()
         {
             var result = HelperMethods.ThirdPartyPayment(mPaymentMethodInputValue, mPrice);
 
             // If the transaction was NOT successful
-            if(!result)
+            if (!result)
             {
                 // Show the error
                 HelperMethods.ShowMessage(MessageType.Error, "Unsuccessful Payment", "The transaction was not successful. Please try again.");
@@ -173,13 +156,23 @@ namespace VirtualReceptionist.Pages
 
             var hotel = Data.Hotels.First(x => x.Floors.Any(x => x.Facilities.Any(x => x.Events.Contains(mEvent))));
 
-            EventReservation.CreateEventReservation(mFirstNameInputValue, mLaststNameInputValue, phone, mNumberOfGuestsInputValue, true, mEvent, hotel.Pin);
+            CreateReservation();
 
             // Show the message
             HelperMethods.ShowMessage(MessageType.Information, "Successful Payment", "Your transaction has been completed and your reservation created. Thank you!");
-            
+
             // Sends the text to the phone
             HelperMethods.SendPhoneText(phone, $"Your reservation has been confirmed. The total amount of your transaction was {mPrice}€. Thank you from Sahara Resort!");
+        }
+
+        protected virtual void CreateReservation()
+        {
+            // Creates the phone
+            var phone = new Phone() { CountryCode = mCountryCodeInputValue, PhoneNumber = mPhoneNumberInputValue };
+
+            var hotel = Data.Hotels.First(x => x.Floors.Any(x => x.Facilities.Any(x => x.Events.Contains(mEvent))));
+
+            EventReservation.CreateEventReservation(mFirstNameInputValue, mLaststNameInputValue, phone, mNumberOfGuestsInputValue, true, mEvent, hotel.Pin);
         }
 
         #endregion
