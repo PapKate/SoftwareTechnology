@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Atom.Blazor.Controls;
+
+using System;
 
 namespace VirtualReceptionist
 {
@@ -17,7 +19,12 @@ namespace VirtualReceptionist
         /// <param name="message">The message</param>
         public static void ShowMessage(MessageType type, string title, string message)
         {
-
+            if(type == MessageType.Information)
+            {
+                ShowInfoMessage(title, message);
+                return;
+            }
+            ShowErrorMessage(title, message);
         }
 
         /// <summary>
@@ -25,9 +32,9 @@ namespace VirtualReceptionist
         /// </summary>
         /// <param name="title">The title</param>
         /// <param name="message">The message</param>
-        public static void ShowInfoMessage(string title, string message)
+        public static async void ShowInfoMessage(string title, string message)
         {
-            ShowMessage(MessageType.Information, title, message);
+            await DialogHelpers.ShowInfoDialogAsync(title, message);
         }
 
         /// <summary>
@@ -35,9 +42,9 @@ namespace VirtualReceptionist
         /// </summary>
         /// <param name="title">The title</param>
         /// <param name="message">The message</param>
-        public static void ShowErrorMessage(string title, string message)
+        public static async void ShowErrorMessage(string title, string message)
         {
-            ShowMessage(MessageType.Error, title, message);
+            await DialogHelpers.ShowErrorDialogAsync(title, message);
         }
 
         #endregion

@@ -113,7 +113,7 @@ namespace VirtualReceptionist
 
             var currentEvent = facility.Events.First(x => x == eventReservation.Event);
 
-            var eventReservations = currentEvent.EventReservations.ToList();
+            var eventReservations = currentEvent.EventReservations?.ToList() ?? new List<EventReservation>();
 
             // Adds the event
             eventReservations.Add(eventReservation);
@@ -130,7 +130,7 @@ namespace VirtualReceptionist
         {
             var hotel = Data.Hotels.First(x => x.Pin == hotelPin);
 
-            return hotel.Floors.SelectMany(x => x.Facilities).SelectMany(x => x.Events).SelectMany(x => x.EventReservations);
+            return hotel.Floors.SelectMany(x => x.Facilities ?? Enumerable.Empty<Facility>()).SelectMany(x => x.Events ?? Enumerable.Empty<Event>()).SelectMany(x => x.EventReservations ?? Enumerable.Empty<EventReservation>());
         }
 
         #endregion

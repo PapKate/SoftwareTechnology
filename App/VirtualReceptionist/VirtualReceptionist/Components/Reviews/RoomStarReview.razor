@@ -1,0 +1,58 @@
+﻿
+@using static VirtualReceptionist.Constants
+
+@namespace VirtualReceptionist
+
+<div class="reviewContainer">
+    <span style="font-size: 24px;">@Model.Name</span>
+    <div class="starsContainer">
+        <IconButton VectorSource="mFirstStar"
+                    ForeColor="@Yellow" 
+                    BackColor="@White"
+                    HasAnimation="false"
+                    OnClick="@(() => StarButton_OnClick(1))"/>
+        <IconButton VectorSource="mSecondStar"
+                    ForeColor="@Yellow" 
+                    BackColor="@White"
+                    HasAnimation="false"
+                    OnClick="@(() => StarButton_OnClick(2))"/>
+        <IconButton VectorSource="mThirdStar"
+                    ForeColor="@Yellow" 
+                    BackColor="@White"
+                    HasAnimation="false"
+                    OnClick="@(() => StarButton_OnClick(3))"/>
+        <IconButton VectorSource="mForthStar"
+                    ForeColor="@Yellow" 
+                    BackColor="@White"
+                    HasAnimation="false"
+                    OnClick="@(() => StarButton_OnClick(4))"/>
+        <IconButton VectorSource="@mFifthStar" 
+                    ForeColor="@Yellow" 
+                    BackColor="@White"
+                    HasAnimation="false"
+                    OnClick="@(() => StarButton_OnClick(5))"/>
+    </div>
+</div>
+
+<style>
+
+    
+    .reviewContainer{
+        position:relative;
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: Calibri,sans-serif;
+        color: #@Gray;
+    }
+
+    .starsContainer{
+        position:relative;
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+</style>
