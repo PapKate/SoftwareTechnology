@@ -1,0 +1,25 @@
+﻿@using static VirtualReceptionist.Constants
+
+@namespace VirtualReceptionist
+
+<div class="paymentsDialogContainer">
+
+    <DropDownMenu @ref="mDropDownMenu"
+                  Id="paymentsDropDown"
+                  TItem="@PaymentMethodModel" 
+                  TextSelector="@(x => x.Name)" 
+                  VectorSourceSelector="@(x => x.VectorSource)"
+                  Background="@White"
+                  Foreground="@Lavender" />
+
+</div>
+
+<style>
+
+    .paymentsDialogContainer {
+        position: relative;
+        height: 40px;
+        margin: 3rem 0;
+    }
+
+</style>

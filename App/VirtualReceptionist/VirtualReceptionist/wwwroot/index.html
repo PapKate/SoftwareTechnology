@@ -20,6 +20,76 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
+    <script src="./_content/Atom.Blazor.Controls/Javascript/javascriptFunctions.js"></script>
 </body>
 
 </html>
+
+<script>
+    window.Functions =
+    {
+        NavigateToElementOnClick: function (index) {
+            document.getElementById(index).scrollIntoView({ behavior: 'smooth' });
+        },
+        StartTime: function (element) {
+            let timeString = new Date().toLocaleTimeString('en-US', { hour12: true, hour: '2-digit', minute: '2-digit' });
+            element.innerHTML = timeString;
+            clock = setTimeout(Functions.StartTime.bind(null, element), 1000);
+        },
+        StopTime: function () {
+            clearTimeout(clock);
+        },
+        SetFocusToElement: function (id) {
+            var element = document.getElementById(id);
+            element.focus();
+        },
+        GetElementCss: function () {
+            var element = document.getElementById('teSt'),
+                style = window.getComputedStyle(element),
+                columnsCss = style.gridTemplateColumns;
+
+            var count = columnsCss.split(' ').length;
+
+            return parseInt(count);
+        },
+        Test: function () {
+            console.log("test");
+        },
+        ScrollEnd: function (id) {
+            const preview = document.getElementById(id);
+            if (preview.offsetHeight + preview.scrollTop >= preview.scrollHeight)
+                return true;
+            return false;
+        }
+    };
+
+    window.JsFunctions =
+    {
+        GetElementHeightById: function (id) {
+            var element = document.getElementById(id);
+
+            return element.offsetHeight;
+        },
+        GetElementDimensionsById: function (id) {
+            var element = document.getElementById(id);
+            var viewPortOffset = element.getBoundingClientRect();
+            return {
+                width: element.offsetWidth,
+                height: element.offsetHeight,
+                top: viewPortOffset.top,
+                bottom: window.innerHeight - viewPortOffset.bottom,
+                left: viewPortOffset.left
+            };
+        },
+        FocusAndSelectTextById: function (id) {
+            var element = document.getElementById(id);
+            element.focus();
+            element.select();
+        },
+        Test: function () {
+            console.log("test");
+        }
+    };
+
+
+</script>

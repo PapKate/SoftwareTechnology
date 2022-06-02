@@ -1,18 +1,20 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Atom.Blazor.Controls;
+
+using Microsoft.AspNetCore.Components;
 
 using System.Collections.Generic;
 
-namespace VirtualReceptionist.Pages.Customer
+namespace VirtualReceptionist
 {
     public partial class CustomerMyRoomPage
     {
         #region Private Members
 
-        private Review mStaffReview;
-        private Review mCleanlinessReview;
-        private Review mComfortReview;
-        private Review mFacilitiesReview;
-        private string mComments = string.Empty;
+        private Review mStaffReview = new Review() { Name = "Staff" };
+        private Review mCleanlinessReview = new Review() { Name = "Cleanliness" };
+        private Review mComfortReview = new Review() { Name = "Comfort" };
+        private Review mFacilitiesReview = new Review() { Name = "Facilities" };
+        private TextInput mComments;
 
         private bool mIsEditable;
         private RoomReview mRoomReview;
@@ -71,7 +73,7 @@ namespace VirtualReceptionist.Pages.Customer
 
             var reviews = new List<Review>() { mStaffReview, mCleanlinessReview, mComfortReview, mFacilitiesReview };
 
-            mRoomReview = RoomReview.CreateRoomReview(RoomCheckIn, mComments, reviews);
+            mRoomReview = RoomReview.CreateRoomReview(RoomCheckIn, mComments.Text, reviews);
 
             if(RoomCheckIn.RoomReview == null)
                 HelperMethods.ShowMessage(MessageType.Error, "Review created", $"Your review of the room {RoomCheckIn.Room.Name} has been created.");
@@ -95,6 +97,10 @@ namespace VirtualReceptionist.Pages.Customer
         private void CancelReview()
         {
             mIsEditable = false;
+            mCleanlinessReview.NumberOfStars = 0;
+            mStaffReview.NumberOfStars = 0;
+            mComfortReview.NumberOfStars = 0;
+            mFacilitiesReview.NumberOfStars = 0;
         }
 
         #endregion

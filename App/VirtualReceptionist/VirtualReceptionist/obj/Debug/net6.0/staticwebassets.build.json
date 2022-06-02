@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dyjA96X1XN24hs+5KQWlgLJryn6DKSvBO9FAZteK0/A=",
+  "Hash": "dWktjkHVAUAsR0k0HfGeUPQt1jX4EEro/Gt0/slqjKg=",
   "Source": "VirtualReceptionist",
   "BasePath": "/",
   "Mode": "Root",
@@ -7784,6 +7784,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\roofGarden.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\PapKate\\Documents\\CEID\\ΤεχνολογίαΛογισμικού\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\wwwroot\\images\\room.jpg",
+      "SourceId": "VirtualReceptionist",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\PapKate\\Documents\\CEID\\ΤεχνολογίαΛογισμικού\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "images/room.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\room.jpg"
     },
     {
       "Identity": "C:\\Users\\PapKate\\Documents\\CEID\\ΤεχνολογίαΛογισμικού\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\wwwroot\\index.html",

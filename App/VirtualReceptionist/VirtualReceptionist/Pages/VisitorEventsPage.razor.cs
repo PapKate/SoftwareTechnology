@@ -1,9 +1,13 @@
 ﻿using Atom.Blazor.Controls;
 
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
+
+using static VirtualReceptionist.Constants;
 
 namespace VirtualReceptionist.Pages
 {
@@ -21,6 +25,8 @@ namespace VirtualReceptionist.Pages
         private uint mNumberOfGuestsInputValue;
         private int mCountryCodeInputValue;
         private string mPhoneNumberInputValue;
+
+        private EventReservationDialog mEventReservationDialog;
 
         private Event mEvent;
         private double mPrice;
@@ -66,41 +72,71 @@ namespace VirtualReceptionist.Pages
         {
             mEvent = @event;
             // Show form
-            await DialogHelpers.ShowPreviewDialogAsync<EventPreviewDialog>(null, null, null, x =>
+            var result = await DialogHelpers.ShowValidationDialogAsync<EventReservationDialog>(null, null, null, x =>
             {
                 x.Style = "padding: 0;";
+                x.NegativeFeddbackButtonConfigure = n =>
+                {
+                    n.Text = "Cancel";
+                    n.BackColor = Red;
+                    n.ForeColor = White;
+                };
+                x.PositiveFeddbackButtonConfigure = p =>
+                {
+                    p.Text = "Save";
+                    p.BackColor = Green;
+                    p.ForeColor = White;
+                };
                 x.Configure = y =>
                 {
                     y.Model = mEvent;
+                    mEventReservationDialog = y;
                 };
             });
+
+            if (result.Feedback)
+            {
+                EventReservationFormSaveButton_OnClick();
+            }
+            else
+            {
+                CancelButton_OnClick();
+            }
         }
 
         /// <summary>
         /// Save the event reservation
         /// </summary>
-        protected void EventReservationFormSaveButton_OnClick()
+        protected async void EventReservationFormSaveButton_OnClick()
         {
+            mFirstNameInputValue = mEventReservationDialog.FirstNameInput.Text;
+            mLaststNameInputValue = mEventReservationDialog.LastNameInput.Text;
+            mPhoneNumberInputValue = mEventReservationDialog.PhoneNumberInput.Text;
+            
+
             // If there is at least an empty input...
             if (string.IsNullOrEmpty(mFirstNameInputValue)
             || string.IsNullOrEmpty(mLaststNameInputValue)
             || string.IsNullOrEmpty(mPhoneNumberInputValue)
-            || mNumberOfGuestsInputValue == 0
-            || mCountryCodeInputValue == 0)
+            || string.IsNullOrEmpty(mEventReservationDialog.NumberOfGuestsInput.Text)
+            || string.IsNullOrEmpty(mEventReservationDialog.CountryCodeInput.Text))
             {
                 // Show the error
-                HelperMethods.ShowMessage(MessageType.Error, "Empty form input", "Please fill out every input in the form");
+                HelperMethods.ShowMessage(MessageType.Error, "Empty form input", "Please fill out every input in the form.");
                 return;
             }
+
+            mNumberOfGuestsInputValue = uint.Parse(mEventReservationDialog.NumberOfGuestsInput.Text);
+            mCountryCodeInputValue = int.Parse(mEventReservationDialog.CountryCodeInput.Text);
 
             // The number of guests to be in the event
             uint eventCheckInGuests = 0;
 
             // For each event check in the event that is NOT a reservation add the number of guests to the eventCheckInGuests
-            mEvent.EventCheckIns.Where(x => x.IsReservation != true).ToList().ForEach(x => eventCheckInGuests += x.NumberOfguests);
+            mEvent.EventCheckIns?.Where(x => x.IsReservation != true).ToList().ForEach(x => eventCheckInGuests += x.NumberOfguests);
 
             // For each event reservation in the event add the number of guests to the eventCheckInGuests
-            mEvent.EventReservations.ToList().ForEach(x => eventCheckInGuests += x.NumberOfGuests);
+            mEvent.EventReservations?.ToList().ForEach(x => eventCheckInGuests += x.NumberOfGuests);
 
             var remainingNumberOfGuests = mEvent.MaxNumberOfGuests - eventCheckInGuests;
 
@@ -108,11 +144,17 @@ namespace VirtualReceptionist.Pages
             if (remainingNumberOfGuests < mNumberOfGuestsInputValue)
             {
                 // Show the error
-                HelperMethods.ShowMessage(MessageType.Error, "Capacity overflow", "The number of guests exceeds the remaining capacity of this event. PLease fill a different number and try again.");
+                HelperMethods.ShowMessage(MessageType.Error, "Capacity overflow", "The number of guests exceeds the remaining capacity of this event. Please fill a different number and try again.");
                 return;
             }
 
-            HelperMethods.ShowMessage(MessageType.Information, "Payment", "Would you like to pay now?");
+            var result = await DialogHelpers.ShowTransitionalDialogAsync("Payment", "Would you like to pay now? If you do not, then your reservation shall not be created.", "Yes", "No", CashPath);
+
+            if (!result.Feedback)
+                return;
+
+            ShowPaymentsForm();
+
         }
 
         /// <summary>
@@ -131,12 +173,32 @@ namespace VirtualReceptionist.Pages
         /// <summary>
         /// Shows the payments form
         /// </summary>
-        protected void ShowPaymentsForm()
+        protected async void ShowPaymentsForm()
         {
             // Calculates the total price for the event reservation
             mPrice = HelperMethods.CalculateTotalPrice(mEvent.Price, mNumberOfGuestsInputValue);
 
             // Show form
+            var result = await DialogHelpers.ShowValidationDialogAsync<PaymentDialog>("Event payment", "Please choose a payment method.", CashPath, x => 
+            {
+                x.NegativeFeddbackButtonConfigure = n =>
+                {
+                    n.Text = "Cancel";
+                    n.BackColor = Red;
+                    n.ForeColor = White;
+                };
+                x.PositiveFeddbackButtonConfigure = p =>
+                {
+                    p.Text = "Submit";
+                    p.BackColor = Green;
+                    p.ForeColor = White;
+                };
+            });
+
+            if (!result.Feedback)
+                return;
+
+            GoToThirdPartyPayment();
         }
 
         protected void GoToThirdPartyPayment()
