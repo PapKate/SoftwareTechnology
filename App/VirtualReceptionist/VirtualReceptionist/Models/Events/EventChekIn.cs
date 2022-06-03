@@ -5,7 +5,7 @@ namespace VirtualReceptionist
     /// <summary>
     /// Represents an event check in
     /// </summary>
-    public class EventChekcIn
+    public class EventChekIn
     {
         #region Public Properties
 
@@ -41,7 +41,7 @@ namespace VirtualReceptionist
         /// <summary>
         /// Default constructor
         /// </summary>
-        public EventChekcIn() : base()
+        public EventChekIn() : base()
         {
 
         }
@@ -50,9 +50,9 @@ namespace VirtualReceptionist
 
         #region Public Methods
 
-        public static EventChekcIn CreateEventCheckIn(Event @event, bool isReservation, EventReservation reservation, Phone phone, uint numberOfGuests, Pin hotelPin)
+        public static EventChekIn CreateEventCheckIn(Event @event, bool isReservation, EventReservation reservation, Phone phone, uint numberOfGuests, Pin hotelPin)
         {
-            var eventCheckIn = new EventChekcIn()
+            var eventCheckIn = new EventChekIn()
             {
                 Event = @event,
                 EventReservation = reservation,
@@ -71,7 +71,7 @@ namespace VirtualReceptionist
         /// </summary>
         /// <param name="eventChekcIn"></param>
         /// <param name="hotelPin"></param>
-        public static void AddEventCheckIn(EventChekcIn eventChekcIn, Pin hotelPin)
+        public static void AddEventCheckIn(EventChekIn eventChekcIn, Pin hotelPin)
         {
             // Gets the hotel with the given pin
             var hotel = Data.Hotels.First(x => x.Pin == hotelPin);

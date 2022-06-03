@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Gm+eQm7Ic65qO6tsZhZwhYBEJZEQA6vSaZ8QjV5JtVM=",
+  "Hash": "6Luu60wPI+9h0ytTknBNzukUTsS5XUi5n9uW3KO/aV0=",
   "Source": "VirtualReceptionist",
   "BasePath": "/",
   "Mode": "Root",
@@ -7667,6 +7667,23 @@
       "OriginalItemSpec": "wwwroot\\images\\ballroom.jpg"
     },
     {
+      "Identity": "C:\\Τεχνολογία_Λογισμικού_Github\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\wwwroot\\images\\conferenceRoom.jpg",
+      "SourceId": "VirtualReceptionist",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Τεχνολογία_Λογισμικού_Github\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "images/conferenceRoom.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\conferenceRoom.jpg"
+    },
+    {
       "Identity": "C:\\Τεχνολογία_Λογισμικού_Github\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\wwwroot\\images\\female1.png",
       "SourceId": "VirtualReceptionist",
       "SourceType": "Discovered",
@@ -7684,6 +7701,23 @@
       "OriginalItemSpec": "wwwroot\\images\\female1.png"
     },
     {
+      "Identity": "C:\\Τεχνολογία_Λογισμικού_Github\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\wwwroot\\images\\gym.jpg",
+      "SourceId": "VirtualReceptionist",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Τεχνολογία_Λογισμικού_Github\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "images/gym.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gym.jpg"
+    },
+    {
       "Identity": "C:\\Τεχνολογία_Λογισμικού_Github\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\wwwroot\\images\\logo.png",
       "SourceId": "VirtualReceptionist",
       "SourceType": "Discovered",
@@ -7699,6 +7733,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\logo.png"
+    },
+    {
+      "Identity": "C:\\Τεχνολογία_Λογισμικού_Github\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\wwwroot\\images\\lounge.jpg",
+      "SourceId": "VirtualReceptionist",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Τεχνολογία_Λογισμικού_Github\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "images/lounge.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\lounge.jpg"
     },
     {
       "Identity": "C:\\Τεχνολογία_Λογισμικού_Github\\SoftwareTechnology\\App\\VirtualReceptionist\\VirtualReceptionist\\wwwroot\\images\\male1.png",
