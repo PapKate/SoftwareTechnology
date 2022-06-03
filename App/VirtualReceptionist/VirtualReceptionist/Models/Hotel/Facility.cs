@@ -51,7 +51,7 @@ namespace VirtualReceptionist
         /// Creates and returns a new facility
         /// </summary>
         /// <returns></returns>
-        public static Facility CreateFacility(Pin hotelPin, string name, Floor floor, Uri image, double area, uint capacity, bool isOccupied, string descripiton)
+        public static Facility CreateFacility(Pin hotelPin, string name, Floor floor, string image, double area, uint capacity, bool isOccupied, string descripiton)
         {
             var newFacility = new Facility()
             { 
@@ -61,7 +61,7 @@ namespace VirtualReceptionist
                 Capacity = capacity,
                 IsOccupied = isOccupied,
                 Description = descripiton,
-                Image = image,
+                Image = image
             };
 
             AddFacility(newFacility, hotelPin);

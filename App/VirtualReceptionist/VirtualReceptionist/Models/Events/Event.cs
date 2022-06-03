@@ -64,7 +64,7 @@ namespace VirtualReceptionist
         /// <summary>
         /// The event check ins
         /// </summary>
-        public IEnumerable<EventChekcIn> EventCheckIns { get; set; }
+        public IEnumerable<EventChekIn> EventCheckIns { get; set; }
 
         /// <summary>
         /// The event reservations

@@ -158,7 +158,7 @@ namespace VirtualReceptionist.Pages.Staff
                 return;
             }
 
-            var facilityImage = new Uri(mFacilityImageInputValue);
+            var facilityImage = mFacilityImageInputValue;
 
             Facility.CreateFacility(HotelPin, mFacilityNameInputValue, mFacilityFloorInputValue, facilityImage, mFacilityAreaInputValue, mFacilityCapacityInputValue, false, mFacilityDescriptionInputValue);
 

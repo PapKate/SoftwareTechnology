@@ -24,7 +24,7 @@ namespace VirtualReceptionist
         /// <summary>
         /// The image
         /// </summary>
-        public Uri Image { get; set; }
+        public string Image { get; set; }
 
         /// <summary>
         /// The area's square meters
