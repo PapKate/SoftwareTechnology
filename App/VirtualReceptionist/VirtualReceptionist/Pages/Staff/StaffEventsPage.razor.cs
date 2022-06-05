@@ -179,7 +179,7 @@ namespace VirtualReceptionist.Pages.Staff
             var hotel = Data.Hotels.First(x => x.Floors.Any(x => x.Facilities.Any(x => x.Events.Contains(mEvent))));
 
             // Creates an event check in
-            EventChekcIn.CreateEventCheckIn(mEvent, mIsReservationInputValue, mEventReservation, phone, mNumberOfGuestsInputValue, HotelPin);
+            EventChekIn.CreateEventCheckIn(mEvent, mIsReservationInputValue, mEventReservation, phone, mNumberOfGuestsInputValue, HotelPin);
 
             // Show the message
             HelperMethods.ShowMessage(MessageType.Information, "Successful Payment", "Your transaction has been completed and your check in created. Thank you!");
