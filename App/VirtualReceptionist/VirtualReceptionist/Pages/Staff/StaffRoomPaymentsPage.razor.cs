@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace VirtualReceptionist.Pages.Staff
+namespace VirtualReceptionist
 {
     public partial class StaffRoomPaymentsPage
     {
         #region Private Members
+
+        private bool mIsPinPadVisible = false;
 
         private Pin mCustomerPin;
 
@@ -39,7 +41,7 @@ namespace VirtualReceptionist.Pages.Staff
 
         #region Private Methods
 
-        private void GetCustomerRoomPaymentData()
+        private void GetCustomerRoomPaymentData(RoomCheckIn roomCheckIn)
         {
             var customer = CustomerUser.GetCustomer(HotelPin, mCustomerPin);
             mRoomCheckIn = customer.RoomCheckIn;

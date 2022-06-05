@@ -6,31 +6,32 @@ using Microsoft.AspNetCore.Components.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 using static VirtualReceptionist.Constants;
 
-namespace VirtualReceptionist.Pages
+namespace VirtualReceptionist
 {
     public partial class VisitorEventsPage
     {
-        #region Private Members
+        #region Protected Members
 
         /// <summary>
         /// A list containing all the events
         /// </summary>
-        private IEnumerable<Event> mEvents = new List<Event>();
+        protected IEnumerable<Event> mEvents = new List<Event>();
 
-        private string mFirstNameInputValue;
-        private string mLaststNameInputValue;
-        private uint mNumberOfGuestsInputValue;
-        private int mCountryCodeInputValue;
-        private string mPhoneNumberInputValue;
+        protected string mFirstNameInputValue;
+        protected string mLaststNameInputValue;
+        protected uint mNumberOfGuestsInputValue;
+        protected int mCountryCodeInputValue;
+        protected string mPhoneNumberInputValue;
 
-        private EventReservationDialog mEventReservationDialog;
+        protected EventReservationDialog mEventReservationDialog;
 
-        private Event mEvent;
-        private double mPrice;
-        private PaymentType mPaymentMethodInputValue = PaymentType.Paypal;
+        protected Event mEvent;
+        protected double mPrice;
+        protected PaymentType mPaymentMethodInputValue = PaymentType.Paypal;
 
         #endregion
 
@@ -148,13 +149,22 @@ namespace VirtualReceptionist.Pages
                 return;
             }
 
-            var result = await DialogHelpers.ShowTransitionalDialogAsync("Payment", "Would you like to pay now? If you do not, then your reservation shall not be created.", "Yes", "No", CashPath);
+            var result = await ShowPaymentsDialog();
 
-            if (!result.Feedback)
+            if (!result)
                 return;
 
             ShowPaymentsForm();
 
+        }
+
+        protected virtual async Task<bool> ShowPaymentsDialog()
+        {
+            var result = await DialogHelpers.ShowTransitionalDialogAsync("Payment", "Would you like to pay now? If you do not, then your reservation shall not be created.", "Yes", "No", CashPath);
+
+            if (!result.Feedback)
+                return false;
+            return true;
         }
 
         /// <summary>

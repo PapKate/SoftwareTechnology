@@ -22,6 +22,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Components/Dialogs/EventCheckInDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEaWFsb2dzXEV2ZW50Q2hlY2tJbkRpYWxvZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Components/Dialogs/EventReservationDialog.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEaWFsb2dzXEV2ZW50UmVzZXJ2YXRpb25EaWFsb2cucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -42,16 +46,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMb2dpblBhZ2VcVXNlclR5cGVCdXR0b24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Components/PinPad/PinPad.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQaW5QYWRcUGluUGFkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Components/Reviews/RoomStarReview.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSZXZpZXdzXFJvb21TdGFyUmV2aWV3LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Components/RoomPayments/RoomPayment.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb29tUGF5bWVudHNcUm9vbVBheW1lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Components/SideMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaWRlTWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Pages/CustomerAndVisitorEventsPage.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJBbmRWaXNpdG9yRXZlbnRzUGFnZS5yYXpvcg==
+[C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Pages/Customer/CustomerEventsPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcQ3VzdG9tZXJFdmVudHNQYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Pages/Customer/CustomerMyReservationsPage.razor]
@@ -62,12 +74,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcQ3VzdG9tZXJNeVJvb21QYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Pages/Customer/CustomerPayments.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcQ3VzdG9tZXJQYXltZW50cy5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Pages/Index.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+[C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Pages/Customer/CustomerReservationPayments.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcQ3VzdG9tZXJSZXNlcnZhdGlvblBheW1lbnRzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Pages/LoginPage.razor]

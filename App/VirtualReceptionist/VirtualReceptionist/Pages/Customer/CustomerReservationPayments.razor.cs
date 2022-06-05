@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Atom.Blazor.Controls;
+
+using Microsoft.AspNetCore.Components;
 
 using System.Collections.Generic;
 using System.Linq;
+
+using static VirtualReceptionist.Constants;
 
 namespace VirtualReceptionist.Pages.Customer
 {
@@ -49,11 +53,32 @@ namespace VirtualReceptionist.Pages.Customer
 
         #region Private Methods
 
-        private void EventReservation_OnClick(CustomerEventReservation reservation)
+        private async void EventReservation_OnClick(CustomerEventReservation reservation)
         {
             // Calculates the total price for the event reservation
             mPrice = HelperMethods.CalculateTotalPrice(reservation.Event.Price, reservation.NumberOfGuests);
             // Show payments form
+            // Show form
+            var result = await DialogHelpers.ShowValidationDialogAsync<PaymentDialog>("Event payment", "Please choose a payment method.", CashPath, x =>
+            {
+                x.NegativeFeddbackButtonConfigure = n =>
+                {
+                    n.Text = "Cancel";
+                    n.BackColor = Red;
+                    n.ForeColor = White;
+                };
+                x.PositiveFeddbackButtonConfigure = p =>
+                {
+                    p.Text = "Submit";
+                    p.BackColor = Green;
+                    p.ForeColor = White;
+                };
+            });
+
+            if (!result.Feedback)
+                return;
+
+            GoToThirdPartyPayment();
         }
 
         private void GoToThirdPartyPayment()

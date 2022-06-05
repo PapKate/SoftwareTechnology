@@ -1,0 +1,197 @@
+﻿@using Atom.Blazor.Controls
+
+@using static VirtualReceptionist.Constants
+
+@namespace VirtualReceptionist
+
+<div class="pinPadContainer">
+    <div class="pinPad">
+        <div class="pinPadPinArea">
+            <label class="pinPadCommandText" for="pin">Please enter a customer pin</label>
+            <input class="pinPadPin" autocomplete="new-password" type="password" name="pin" @bind-value="@mText" />
+            <div class="pinPadUnderscore"></div>
+        </div>
+        <div class="pinPadInputArea">
+            <div class="pinPadButton">
+                <TextButton Text="1" 
+                    BackColor="@White" 
+                    ForeColor="@Gray" 
+                    IsEnabled="@(!IsDisabled)"
+                    OnClick="@(() => NumberButtonClicked(1))"/>
+            </div>
+            <div class="pinPadButton">
+                <TextButton Text="2" 
+                    BackColor="@White" 
+                    ForeColor="@Gray" 
+                    IsEnabled="@(!IsDisabled)"
+                    OnClick="@(() => NumberButtonClicked(2))"/>
+            </div>
+            <div class="pinPadButton">
+                <TextButton Text="3" 
+                    BackColor="@White" 
+                    ForeColor="@Gray" 
+                    IsEnabled="@(!IsDisabled)"
+                    OnClick="@(() => NumberButtonClicked(3))"/>
+            </div>
+            <div class="pinPadButton">
+                <TextButton Text="4" 
+                    BackColor="@White" 
+                    ForeColor="@Gray" 
+                    IsEnabled="@(!IsDisabled)"
+                    OnClick="@(() => NumberButtonClicked(4))"/>
+            </div>
+            <div class="pinPadButton">
+                <TextButton Text="5" 
+                    BackColor="@White" 
+                    ForeColor="@Gray" 
+                    IsEnabled="@(!IsDisabled)"
+                    OnClick="@(() => NumberButtonClicked(5))"/>
+            </div>
+            <div class="pinPadButton">
+                <TextButton Text="6" 
+                    BackColor="@White" 
+                    ForeColor="@Gray" 
+                    IsEnabled="@(!IsDisabled)"
+                    OnClick="@(() => NumberButtonClicked(6))"/>
+            </div>
+            <div class="pinPadButton">
+                <TextButton Text="7" 
+                    BackColor="@White" 
+                    ForeColor="@Gray" 
+                    IsEnabled="@(!IsDisabled)"
+                    OnClick="@(() => NumberButtonClicked(7))"/>
+            </div>
+            <div class="pinPadButton">
+                <TextButton Text="8" 
+                    BackColor="@White" 
+                    ForeColor="@Gray" 
+                    IsEnabled="@(!IsDisabled)"
+                    OnClick="@(() => NumberButtonClicked(8))"/>
+            </div>
+            <div class="pinPadButton">
+                <TextButton Text="9" 
+                    BackColor="@White" 
+                    ForeColor="@Gray" 
+                    IsEnabled="@(!IsDisabled)"
+                    OnClick="@(() => NumberButtonClicked(9))"/>
+            </div>
+            <div class="pinPadButton">
+                <IconButton VectorSource="@Constants.Backspace" 
+                    BackColor="@White" 
+                    ForeColor="@Gray" 
+                    IsEnabled="@(!IsDisabled)"
+                    IconStyle="@($"width: {Atom.Blazor.Personalization.SmallButtonSize};")"
+                    OnClick="@BackspaceButtonClicked"/>
+            </div>
+            <div class="pinPadButton">
+                <TextButton Text="0" 
+                    BackColor="@White" 
+                    ForeColor="@Gray" 
+                    IsEnabled="@(!IsDisabled)"
+                    OnClick="@(() => NumberButtonClicked(0))"/>
+            </div>
+            <div class="pinPadButton">
+                <IconButton VectorSource="@Constants.ChevronRight"
+                    BackColor="@White" 
+                    ForeColor="@Gray" 
+                    IsEnabled="@(!IsDisabled)"
+                    IconStyle="@($"width: {Atom.Blazor.Personalization.MediumButtonSize};")"
+                    OnClick="@EnterClicked"/>
+            </div>
+        </div>
+    </div> 
+</div>
+
+<style>
+
+    .pinPadButton
+    {
+        width: 100%;
+        height: 100%;
+        background: #@White;
+    }
+
+    .pinPadContainer
+    {
+        height: calc(100vh - 4rem);
+        top: 0;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 80vw;
+        margin: auto;
+    }
+
+    .pinPad
+    {
+        background-color: white;
+        box-shadow: @Atom.Blazor.Personalization.BoxShadow;
+        background-size: cover;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pinPadPinArea
+    {
+        display: flex;
+        flex-direction: column;
+        height: 24%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .pinPadCommandText
+    {
+        font-family: Calibri,  sans-serif;
+        color: #@Gray;
+        font-size: 250%;
+    }
+
+    .pinPadUnderscore
+    {
+        height: 2px;
+        background-color: #@Lavender;
+        width: 80%;
+        margin-top: 1em;
+        box-shadow: 0rem 0.1rem 0.2rem -0.01rem rgba(0, 0, 0, 0.3);
+        margin: 2%;
+    }
+
+    .pinPadPin
+    {
+        height: 3rem;
+        width: 75%;
+        border: none;
+        text-align: center;
+        font-family: Calibri,  sans-serif;
+        font-size: 40px;
+        color: #@Gray;
+    }
+
+    .pinPadPin:focus
+    {
+        outline: none;
+    }
+
+    input::-ms-reveal,
+    input::-ms-clear
+    {
+        display: inline-block;
+        color: #@Lavender;
+    }
+
+    .pinPadInputArea
+    {
+        flex: 1;
+        display: grid;
+        padding: 8px;
+        gap: 8px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: minmax(8px, 24%);
+        align-items: stretch;
+        background-color: #@PalePurple;
+        align-self: stretch;
+    }
+
+</style>

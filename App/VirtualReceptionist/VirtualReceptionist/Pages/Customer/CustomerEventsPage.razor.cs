@@ -1,9 +1,14 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Atom.Blazor.Controls;
+
+using Microsoft.AspNetCore.Components;
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
-namespace VirtualReceptionist.Pages.Customer
+using static VirtualReceptionist.Constants;
+
+namespace VirtualReceptionist
 {
     public partial class CustomerEventsPage
     {
@@ -43,7 +48,20 @@ namespace VirtualReceptionist.Pages.Customer
         /// </summary>
         protected override void OnInitialized()
         {
-            mEvents = Event.GetEvents();
+            HotelPin = GlobalData.Hotel.Pin;
+            mEvents = Event.GetEvents(HotelPin);
+        }
+
+        protected override async Task<bool> ShowPaymentsDialog()
+        {
+            var result = await DialogHelpers.ShowTransitionalDialogAsync("Payment", "Would you like to pay now? If you do not, you can pay later at the <<Reservation payments>> page.", "Yes", "No", CashPath);
+
+            if (!result.Feedback)
+            {
+                PaymentsFormNoButton_OnClick();
+                return false;
+            }
+            return true;
         }
 
         protected override void CreateReservation()
