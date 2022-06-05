@@ -1,5 +1,40 @@
-﻿<h3>CustomerPayments</h3>
+﻿@page "/customerReservationPayments"
 
-@code {
+<div class="headerWrapper">
+    <Header HotelName="Sahara resort" />
+</div>
 
-}
+<div class="pageWrapper">
+    <div class="userPageWrapper">
+
+        <SideMenu />
+        
+        <div class="userPageContent">
+            <div class="eventsContainer">
+                @foreach(var reservation in mEventReservations)
+                {
+                    <EventPreview Model="@reservation.Event" OnClick="@((e)=> EventReservation_OnClick(reservation))"/>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<DialogsContainer/>
+
+<style>
+
+    .eventsContainer {
+        display: grid;
+        padding: 2%;
+        gap: 2em;
+        grid-auto-rows: minmax(400px, 2fr);
+        grid-template-columns: repeat(2, 3fr);
+        position: relative;
+        width: 100%;
+        overflow: auto;
+    }
+
+</style>
+

@@ -165,7 +165,7 @@ namespace VirtualReceptionist
         /// </summary>
         /// <param name="hotelPin">The hotel's pin</param>
         /// <returns></returns>
-        public IEnumerable<Event> GetEvents(Pin hotelPin)
+        public static IEnumerable<Event> GetEvents(Pin hotelPin)
         {
             // Gets the hotel with the given pin
             var hotel = Data.Hotels.First(x => x.Pin == hotelPin);

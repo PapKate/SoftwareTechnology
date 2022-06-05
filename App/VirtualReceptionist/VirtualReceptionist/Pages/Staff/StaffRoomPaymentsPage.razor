@@ -1,5 +1,48 @@
-﻿<h3>StaffRoomPaymentsPage</h3>
+﻿@page "/staffPayments"
 
-@code {
+@namespace VirtualReceptionist
 
-}
+
+<div class="headerWrapper">
+    <Header HotelName="Sahara resort" />
+</div>
+
+<div class="pageWrapper">
+    <div class="userPageWrapper">
+
+        <SideMenu />
+        
+        <div class="userPageContent">
+            @if(mIsPinPadVisible)
+{
+                <PinPad OnSuccessfulLogIn="@(()=> mIsPinPadVisible = false)"/>
+            }
+            else
+            {
+                <div class="roomsContainer">
+                    <RoomPayment OnClick="@((e) => GetCustomerRoomPaymentData(e))" />
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
+
+<DialogsContainer/>
+
+<style>
+
+    .roomsContainer {
+        display: grid;
+        padding: 2%;
+        gap: 2em;
+        grid-auto-rows: minmax(400px, 2fr);
+        grid-template-columns: repeat(2, 3fr);
+        position: relative;
+        width: 100%;
+        overflow: auto;
+    }
+
+</style>
+
+

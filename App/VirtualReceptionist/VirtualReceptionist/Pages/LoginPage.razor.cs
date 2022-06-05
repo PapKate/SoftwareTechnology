@@ -812,6 +812,8 @@ namespace VirtualReceptionist
                 facilities.AddRange(facilitiesOne);
                 facilities.AddRange(facilitiesTwo);
                 Data.Facilities = facilities;
+
+                GlobalData.Hotel = hotels.First();
             }
         }
 

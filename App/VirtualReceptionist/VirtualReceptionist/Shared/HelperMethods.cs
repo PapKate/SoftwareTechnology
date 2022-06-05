@@ -1,6 +1,7 @@
 ﻿using Atom.Blazor.Controls;
 
 using System;
+using System.Linq;
 
 namespace VirtualReceptionist
 {
@@ -58,7 +59,7 @@ namespace VirtualReceptionist
         /// <param name="message">The message</param>
         public static void SendPhoneText(Phone phone, string message)
         {
-
+            Console.WriteLine(message);
         }
 
         #endregion
