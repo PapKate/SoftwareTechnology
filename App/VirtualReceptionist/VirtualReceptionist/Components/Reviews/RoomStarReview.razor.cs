@@ -151,8 +151,25 @@ namespace VirtualReceptionist
                 Name = Model.Name,
                 NumberOfStars = star 
             };
+            OnModelChanged();
+        }
+
+        private async void OnModelChanged()
+        {
+            await ModelChanged.InvokeAsync(Model);
         }
 
         #endregion
+
+        #region Public Events 
+
+        /// <summary>
+        /// Fires every time the <see cref="RoomStarReview.Model"/> is changed
+        /// </summary>
+        [Parameter]
+        public EventCallback<Review> ModelChanged { get; set; }
+
+        #endregion
+
     }
 }

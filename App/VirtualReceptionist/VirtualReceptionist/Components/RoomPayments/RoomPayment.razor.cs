@@ -58,30 +58,7 @@ namespace VirtualReceptionist
 
         protected override void OnInitialized()
         {
-            Model = new RoomCheckIn() 
-            {
-                NumberOfGuests = 4,
-                DateCreated = new DateTime(2022, 06, 01),
-                DateEnded = new DateTime(2022, 06, 11),
-                IsPaid = false,
-                Room = new Room()
-                { 
-                    Name = "505",
-                    Price = 192,
-                    Area = 94,
-                    Capacity = 5,
-                    Floor = new Floor()
-                    {
-                        Hotel = new Hotel() { Name = "Sahara Resort" }
-                    }
-                },
-                Customer = new CustomerUser()
-                {
-                    Pin = new Pin() { Code = 2323, IsActive = true },
-                    Phone = new Phone() { CountryCode = 30, PhoneNumber = "6978010232" }
-                }
-            
-            };
+        
             var days = (Model.DateEnded - Model.DateCreated).Days;
             mTotalPrice = Model.Room.Price * days;
         }

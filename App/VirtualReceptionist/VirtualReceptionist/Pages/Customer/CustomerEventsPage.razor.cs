@@ -54,7 +54,7 @@ namespace VirtualReceptionist
 
         protected override async Task<bool> ShowPaymentsDialog()
         {
-            var result = await DialogHelpers.ShowTransitionalDialogAsync("Payment", "Would you like to pay now? If you do not, you can pay later at the <<Reservation payments>> page.", "Yes", "No", CashPath);
+            var result = await DialogHelpers.ShowTransitionalDialogAsync("Payment", "Would you like to pay now? If you do not, you can pay later at the 'Reservation payments' page.", "Yes", "No", CashPath);
 
             if (!result.Feedback)
             {
@@ -77,17 +77,6 @@ namespace VirtualReceptionist
         #endregion
 
         #region Private Methods
-
-        /// <summary>
-        /// Confirms and shows the payment form
-        /// </summary>
-        private void PaymentsFormYesButton_OnClick()
-        {
-            // Close the Payment dialog
-
-            // Opens the payment form
-        }
-
 
         /// <summary>
         /// Creates an unpaid reservation

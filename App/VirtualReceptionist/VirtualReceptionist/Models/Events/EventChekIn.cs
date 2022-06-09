@@ -1,4 +1,5 @@
-﻿ using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace VirtualReceptionist
 {
@@ -78,7 +79,7 @@ namespace VirtualReceptionist
 
             var currentEvent = hotel.Floors.First(x => x == eventChekcIn.Event.Facility.Floor).Facilities.First(x => x == eventChekcIn.Event.Facility).Events.First(x => x == eventChekcIn.Event);
 
-            var eventCheckIns = currentEvent.EventCheckIns.ToList();
+            var eventCheckIns = currentEvent.EventCheckIns?.ToList() ?? new List<EventChekIn>();
 
             eventCheckIns.Add(eventChekcIn);
 

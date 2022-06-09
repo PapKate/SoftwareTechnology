@@ -41,5 +41,23 @@ namespace VirtualReceptionist
         public static IEnumerable<Hotel> Hotels = new List<Hotel>();
 
         #endregion
+
+        #region Customers
+
+        public static IEnumerable<CustomerUser> Customers = new List<CustomerUser>();
+
+        #endregion
+
+        #region Room Reviews
+
+        public static IEnumerable<RoomReview> RoomReviews = new List<RoomReview>();
+
+        #endregion
+
+        #region Room Check Ins
+
+        public static IEnumerable<RoomCheckIn> RoomCheckIns = new List<RoomCheckIn>();
+
+        #endregion
     }
 }

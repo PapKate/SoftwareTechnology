@@ -112,15 +112,20 @@ namespace VirtualReceptionist
         {
             mFirstNameInputValue = mEventReservationDialog.FirstNameInput.Text;
             mLaststNameInputValue = mEventReservationDialog.LastNameInput.Text;
-            mPhoneNumberInputValue = mEventReservationDialog.PhoneNumberInput.Text;
-            
+            // If the user is a visitor...
+            if (GlobalData.UserType == UserType.Visitor)
+                mPhoneNumberInputValue = mEventReservationDialog.PhoneNumberInput.Text;
+            // Else if the user is a customer...
+            else
+                // Gets the phone number from the customer's personal info
+                mPhoneNumberInputValue = GlobalData.Customer.Phone.PhoneNumber;
 
             // If there is at least an empty input...
             if (string.IsNullOrEmpty(mFirstNameInputValue)
             || string.IsNullOrEmpty(mLaststNameInputValue)
             || string.IsNullOrEmpty(mPhoneNumberInputValue)
             || string.IsNullOrEmpty(mEventReservationDialog.NumberOfGuestsInput.Text)
-            || string.IsNullOrEmpty(mEventReservationDialog.CountryCodeInput.Text))
+            || GlobalData.UserType == UserType.Visitor && string.IsNullOrEmpty(mEventReservationDialog.CountryCodeInput?.Text))
             {
                 // Show the error
                 HelperMethods.ShowMessage(MessageType.Error, "Empty form input", "Please fill out every input in the form.");
@@ -128,7 +133,9 @@ namespace VirtualReceptionist
             }
 
             mNumberOfGuestsInputValue = uint.Parse(mEventReservationDialog.NumberOfGuestsInput.Text);
-            mCountryCodeInputValue = int.Parse(mEventReservationDialog.CountryCodeInput.Text);
+            // If the country code input exists...
+            if(mEventReservationDialog.CountryCodeInput != null)
+                mCountryCodeInputValue = int.Parse(mEventReservationDialog.CountryCodeInput.Text);
 
             // The number of guests to be in the event
             uint eventCheckInGuests = 0;
@@ -155,7 +162,6 @@ namespace VirtualReceptionist
                 return;
 
             ShowPaymentsForm();
-
         }
 
         protected virtual async Task<bool> ShowPaymentsDialog()
@@ -226,8 +232,6 @@ namespace VirtualReceptionist
             // Creates the phone
             var phone = new Phone() { CountryCode = mCountryCodeInputValue, PhoneNumber = mPhoneNumberInputValue };
 
-            var hotel = Data.Hotels.First(x => x.Floors.Any(x => x.Facilities.Any(x => x.Events.Contains(mEvent))));
-
             CreateReservation();
 
             // Show the message
@@ -242,7 +246,7 @@ namespace VirtualReceptionist
             // Creates the phone
             var phone = new Phone() { CountryCode = mCountryCodeInputValue, PhoneNumber = mPhoneNumberInputValue };
 
-            var hotel = Data.Hotels.First(x => x.Floors.Any(x => x.Facilities.Any(x => x.Events.Contains(mEvent))));
+            var hotel = mEvent.Facility.Floor.Hotel;
 
             EventReservation.CreateEventReservation(mFirstNameInputValue, mLaststNameInputValue, phone, mNumberOfGuestsInputValue, true, mEvent, hotel.Pin);
         }

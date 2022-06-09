@@ -1,4 +1,10 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Atom.Blazor.Controls;
+
+using Microsoft.AspNetCore.Components;
+
+using System.Collections.Generic;
+
+using static VirtualReceptionist.Constants;
 
 namespace VirtualReceptionist
 {
@@ -6,14 +12,14 @@ namespace VirtualReceptionist
     {
         #region Private Members
 
-        private bool mIsPinPadVisible = false;
+        private bool mIsPinPadVisible = true;
 
-        private Pin mCustomerPin;
+        private CustomerUser mCustomer;
 
         private RoomCheckIn mRoomCheckIn;
         private double mPrice;
         private double mGiven;
-        private PaymentType mPaymentMethodInputValue = PaymentType.Paypal;
+        private PaymentType mPaymentMethodInputValue = PaymentType.Cash;
 
         #endregion
 
@@ -39,13 +45,28 @@ namespace VirtualReceptionist
 
         #endregion
 
+        #region Protected Methods
+
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+
+            HotelPin = GlobalData.Hotel.Pin;
+        }
+
+        #endregion
+
         #region Private Methods
 
-        private void GetCustomerRoomPaymentData(RoomCheckIn roomCheckIn)
+        private void GetCustomerCheckInData(CustomerUser customer)
         {
-            var customer = CustomerUser.GetCustomer(HotelPin, mCustomerPin);
+            mCustomer = customer;
             mRoomCheckIn = customer.RoomCheckIn;
-            if(customer.RoomCheckIn.IsPaid)
+        }
+
+        private async void GetCustomerRoomPaymentData()
+        {
+            if(mCustomer.RoomCheckIn.IsPaid)
             {
                 HelperMethods.ShowMessage(MessageType.Information, "No due payments", "The stay in this room is already paid. Thank you for choosing us from Sahara Resort!");
                 return;
@@ -53,21 +74,55 @@ namespace VirtualReceptionist
 
             var numberOfNights = (uint)(mRoomCheckIn.DateEnded - mRoomCheckIn.DateCreated).Days;
 
-            mPrice = HelperMethods.CalculateTotalPrice(mRoomCheckIn.Room.Price, numberOfNights); 
+            mPrice = HelperMethods.CalculateTotalPrice(mRoomCheckIn.Room.Price, numberOfNights);
+
+            // Show form
+            var result = await DialogHelpers.ShowValidationDialogAsync<PaymentDialog>("Room payment", "Please choose a payment method.", CashPath, x =>
+            {
+                x.NegativeFeddbackButtonConfigure = n =>
+                {
+                    n.Text = "Cancel";
+                    n.BackColor = Red;
+                    n.ForeColor = White;
+                };
+                x.PositiveFeddbackButtonConfigure = p =>
+                {
+                    p.Text = "Submit";
+                    p.BackColor = Green;
+                    p.ForeColor = White;
+                };
+                x.Configure = y =>
+                {
+                    y.PaymentMethods = new List<PaymentMethodModel>() 
+                    {
+                        new PaymentMethodModel("Visa", VisaPath, PaymentType.Visa),
+                        new PaymentMethodModel("MasterCard", MasterCardPath, PaymentType.Mastercard),
+                        new PaymentMethodModel("PayPal", PayPalPath, PaymentType.Paypal),
+                        new PaymentMethodModel("Cash", CashPath, PaymentType.Cash),
+                    };
+                };
+            });
+
+            if (!result.Feedback)
+                return;
+
             // Show payments form
-            // -> PaymentsFormOKButton_OnClick()
+            PaymentsFormOKButton_OnClick();
         }
 
-        private void PaymentsFormOKButton_OnClick()
+        private async void PaymentsFormOKButton_OnClick()
         {
             if (mPaymentMethodInputValue == PaymentType.Cash)
             {
-                var change = HelperMethods.SubmitPaymentWithCash(mPrice, mGiven);
-                RoomCheckInPaymentConfirmed();
+                var result = await HelperMethods.SubmitPaymentWithCash(mPrice, mGiven);
+                
+                if(result)
+                    RoomCheckInPaymentConfirmed();
+                
                 return;
             }
 
-            HelperMethods.SubmitPaymentWithPOS();
+            GoToPOSPayment();
         }
 
         /// <summary>

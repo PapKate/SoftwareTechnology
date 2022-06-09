@@ -15,12 +15,12 @@
         <div class="userPageContent">
             @if(mIsPinPadVisible)
 {
-                <PinPad OnSuccessfulLogIn="@(()=> mIsPinPadVisible = false)"/>
+                <PinPad OnSuccessfulLogIn="@((e)=> {mIsPinPadVisible = false; GetCustomerCheckInData(e);})"/>
             }
             else
             {
                 <div class="roomsContainer">
-                    <RoomPayment OnClick="@((e) => GetCustomerRoomPaymentData(e))" />
+                    <RoomPayment Model="@mRoomCheckIn" OnClick="@((e) => GetCustomerRoomPaymentData())" />
                 </div>
             }
         </div>

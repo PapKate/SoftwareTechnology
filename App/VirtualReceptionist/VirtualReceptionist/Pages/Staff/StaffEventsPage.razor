@@ -1,5 +1,9 @@
 ﻿@page "/staffEvents"
 
+@using static VirtualReceptionist.Constants
+
+@namespace VirtualReceptionist
+
 <div class="headerWrapper">
     <Header HotelName="Sahara resort" />
 </div>
@@ -10,9 +14,39 @@
         <SideMenu />
         
         <div class="userPageContent">
-            <h3>StaffEventsPage</h3>
+             <div class="eventsContainer">
+                @foreach(var eventPreview in mEvents)
+                {
+                    <EventPreview @ref="mEventPreview" Model="@eventPreview" OnClick="@((e)=> OpenEventCheckInForm(e))">
+                         <ContextMenu @ref="@mEventPreview.ContextMenuRef" 
+                                     BackColor="@White" 
+                                     ContainerBackColor="@Lavender" 
+                                     BoxShadow="@AtomTheme.Shadow" 
+                                     BorderRadius="4px"
+                                     IsOpenChanged="@(() => AddButtons())">
+                        </ContextMenu>
+                    </EventPreview>
+                }
+            </div>
         </div>
 
     </div>
 </div>
 
+<DialogsContainer/>
+
+
+<style>
+
+    .eventsContainer {
+        display: grid;
+        padding: 2%;
+        gap: 2em;
+        grid-auto-rows: minmax(400px, 2fr);
+        grid-template-columns: repeat(2, 3fr);
+        position: relative;
+        width: 100%;
+        overflow: auto;
+    }
+
+</style>

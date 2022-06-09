@@ -43,6 +43,15 @@ namespace VirtualReceptionist
 
         #endregion
 
+        #region Protected Methods
+
+        protected override void OnInitialized()
+        {
+            RoomCheckIn = GlobalData.RoomCheckIn;
+        }
+
+        #endregion
+
         #region Private Methods
 
         /// <summary>
@@ -59,7 +68,6 @@ namespace VirtualReceptionist
         private void SetReview()
         {
             mIsEditable = false;
-
             // If any review is empty...
             if(mStaffReview.NumberOfStars == 0
             || mCleanlinessReview.NumberOfStars == 0
@@ -73,12 +81,14 @@ namespace VirtualReceptionist
 
             var reviews = new List<Review>() { mStaffReview, mCleanlinessReview, mComfortReview, mFacilitiesReview };
 
+            var firstReview = RoomCheckIn.RoomReview == null;
+
             mRoomReview = RoomReview.CreateRoomReview(RoomCheckIn, mComments.Text, reviews);
 
-            if(RoomCheckIn.RoomReview == null)
-                HelperMethods.ShowMessage(MessageType.Error, "Review created", $"Your review of the room {RoomCheckIn.Room.Name} has been created.");
+            if(firstReview)
+                HelperMethods.ShowMessage(MessageType.Information, "Review created", $"Your review of the room {RoomCheckIn.Room.Name} has been created.");
             else
-                HelperMethods.ShowMessage(MessageType.Error, "Review updated", $"Your review of the room {RoomCheckIn.Room.Name} has been updated.");
+                HelperMethods.ShowMessage(MessageType.Information, "Review updated", $"Your review of the room {RoomCheckIn.Room.Name} has been updated.");
         }
 
         /// <summary>
@@ -86,6 +96,7 @@ namespace VirtualReceptionist
         /// </summary>
         private void DeleteReview()
         {
+            CancelReview();
             RoomReview.DeleteRoomReview(RoomCheckIn, mRoomReview);
             
             HelperMethods.ShowMessage(MessageType.Error, "Review deleted", $"Your review of the room {RoomCheckIn.Room.Name} has been removed.");
