@@ -1,0 +1,140 @@
+﻿@using static VirtualReceptionist.Constants
+
+@namespace VirtualReceptionist
+
+<div class="servicePreviewContainer">
+    <div class="servicePreviewDescriptionArea">
+        <h1 class="eventPreviewTitle">Facility Form</h1>
+        <span>Please fill the inputs to create a facility</span>
+        <div class="eventPreviewInputsArea">
+                
+            <div style="height: 40px; width: 100%; position:relative;">
+                <SearchMenuInput @ref="@FloorInput" 
+                        TItem="@Floor"
+                        Foreground="@Gray"
+                        Id="imageSearchMenu" />
+            </div>
+
+            <div class="facilityFormInputs">
+                <TextInput @ref="NameInput"
+                            Hint="Name"
+                            ShowHint="true"
+                            LineColor="@Lavender"
+                            HasLine="true"
+                            FocusColor="@Blue" 
+                            ForeColor="@Gray" />
+
+                <TextInput @ref="ImageInput"
+                            Hint="Image"
+                            ShowHint="true"
+                            LineColor="@Lavender"
+                            HasLine="true"
+                            FocusColor="@Blue" 
+                            ForeColor="@Gray" />
+
+                <NumericInput @ref="AreaInput"
+                            ForeColor="@Gray"
+                            HasLine="true"
+                            FocusColor="@Blue"
+                            LineColor="@Lavender"
+                            ShowHint="true"
+                            BorderColor="@Lavender"
+                            Hint="Area"/>
+
+                    <NumericInput @ref="CapacityInput"
+                            ForeColor="@Gray"
+                            HasLine="true"
+                            FocusColor="@Blue"
+                            LineColor="@Lavender"
+                            ShowHint="true"
+                            BorderColor="@Lavender"
+                            Hint="Capacity"/>
+            </div>
+            <div style="width: 100%; height: 44px;">
+                <TextInput @ref="DescriptionInput"
+                            Hint="Description"
+                            ShowHint="true"
+                            LineColor="@Lavender"
+                            HasLine="true"
+                            FocusColor="@Blue" 
+                            ForeColor="@Gray" />
+
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    p {
+        margin: 0;
+    }
+
+    .servicePreviewContainer {
+        width: 44vw;
+        position:relative;
+        display: grid;
+        grid-auto-rows: minmax(2em, auto);
+        grid-template-columns: 100%;
+        overflow-y: auto;
+    }
+
+    .servicePreviewSeivceComponentArea {
+        position: relative;
+        width: 100%;
+    }
+
+    .servicePreviewDescriptionArea {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 1em;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+    }
+
+    .eventPreviewTitle{
+        font-family: Calibri,sans-serif;
+        font-weight: 600;
+        color: #@Lavender;
+    }
+
+    .eventPreviewInputsArea{
+        position:relative;
+        width: 100%;
+        padding: 1em 2em;
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+        align-items:center;
+        justify-content: center;
+    }
+
+    .facilityFormInputs{
+        position:relative;
+        width:100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 44px;
+        gap: 2em;
+    }
+
+    .dialogButtonsArea {
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        gap: 2em;
+        justify-content: space-evenly;
+        align-items: center;
+        padding-bottom: 2em;
+    }
+
+    .dialogContent{
+        overflow-y: scroll;
+    }
+
+</style>
+

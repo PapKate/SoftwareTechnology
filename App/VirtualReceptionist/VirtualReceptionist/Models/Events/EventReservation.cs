@@ -93,7 +93,6 @@ namespace VirtualReceptionist
             AddEventReservation(hotelPin, eventReservation);
 
             return eventReservation;
-
         }
 
         /// <summary>
@@ -118,7 +117,7 @@ namespace VirtualReceptionist
             // Adds the event
             eventReservations.Add(eventReservation);
 
-            currentEvent.EventReservations = eventReservations;
+            Data.Hotels.First(x => x.Pin == hotelPin).Floors.First(x => x == eventReservation.Event.Facility.Floor).Facilities.First(x => x == eventReservation.Event.Facility).Events.First(x => x == eventReservation.Event).EventReservations = eventReservations;
         }
 
         /// <summary>
@@ -130,7 +129,8 @@ namespace VirtualReceptionist
         {
             var hotel = Data.Hotels.First(x => x.Pin == hotelPin);
 
-            return hotel.Floors.SelectMany(x => x.Facilities ?? Enumerable.Empty<Facility>()).SelectMany(x => x.Events ?? Enumerable.Empty<Event>()).SelectMany(x => x.EventReservations ?? Enumerable.Empty<EventReservation>());
+            return hotel.Floors.SelectMany(x => x.Facilities ?? Enumerable.Empty<Facility>()).SelectMany(x => x.Events ?? Enumerable.Empty<Event>())
+                            .SelectMany(x => x.EventReservations ?? Enumerable.Empty<EventReservation>());
         }
 
         #endregion

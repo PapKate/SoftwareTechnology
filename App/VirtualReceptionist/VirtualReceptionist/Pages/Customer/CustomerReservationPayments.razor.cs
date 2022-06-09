@@ -46,6 +46,7 @@ namespace VirtualReceptionist.Pages.Customer
 
         protected override void OnInitialized()
         {
+            Customer = GlobalData.Customer;
             mEventReservations = Customer.CustomerEventReservations.Where(x => x.IsPaid == false).ToList();
         }
 
@@ -55,6 +56,8 @@ namespace VirtualReceptionist.Pages.Customer
 
         private async void EventReservation_OnClick(CustomerEventReservation reservation)
         {
+            mCustomerEventReservation = reservation;
+
             // Calculates the total price for the event reservation
             mPrice = HelperMethods.CalculateTotalPrice(reservation.Event.Price, reservation.NumberOfGuests);
             // Show payments form
@@ -93,6 +96,7 @@ namespace VirtualReceptionist.Pages.Customer
                 return;
             }
 
+            // Sets the reservation as paid
             mCustomerEventReservation.IsPaid = true;
 
             // Show the message
@@ -100,6 +104,11 @@ namespace VirtualReceptionist.Pages.Customer
 
             // Sends the text to the phone
             HelperMethods.SendPhoneText(Customer.Phone, $"Your reservation has been confirmed. The total amount of your transaction was {mPrice}€. Thank you from Sahara Resort!");
+
+            var newReservations = mEventReservations.ToList();
+            // Removes the paid reservation
+            newReservations.Remove(mCustomerEventReservation);
+            mEventReservations = newReservations;
         }
 
         #endregion

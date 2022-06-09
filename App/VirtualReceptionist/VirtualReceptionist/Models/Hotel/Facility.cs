@@ -82,11 +82,10 @@ namespace VirtualReceptionist
             // Gets the floor where the facility needs to be added
             var floor = hotel.Floors.First(x => x == facility.Floor);
 
-            //TODO 
             var facilities = floor.Facilities.ToList();
             facilities.Add(facility);
 
-            floor.Facilities = facilities;
+            Data.Hotels.First(x => x.Pin == hotelPin).Floors.First(x => x == floor).Facilities = facilities;
         }
      
         #endregion

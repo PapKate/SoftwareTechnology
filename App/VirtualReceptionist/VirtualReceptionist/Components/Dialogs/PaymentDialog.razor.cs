@@ -17,6 +17,16 @@ namespace VirtualReceptionist
 
         #endregion
 
+        #region Public Properties
+
+        /// <summary>
+        /// The payment methods
+        /// </summary>
+        [Parameter]
+        public IEnumerable<PaymentMethodModel> PaymentMethods { get; set; }
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -35,14 +45,20 @@ namespace VirtualReceptionist
         {
             if(firstRender)
             {
-                var models = new List<PaymentMethodModel>() 
+                if(PaymentMethods == null)
                 {
-                    new PaymentMethodModel("Visa", VisaPath, PaymentType.Visa),
-                    new PaymentMethodModel("MasterCard", MasterCardPath, PaymentType.Mastercard),
-                    new PaymentMethodModel("PayPal", PayPalPath, PaymentType.Paypal)
-                };
+                    var models = new List<PaymentMethodModel>()
+                    {
+                        new PaymentMethodModel("Visa", VisaPath, PaymentType.Visa),
+                        new PaymentMethodModel("MasterCard", MasterCardPath, PaymentType.Mastercard),
+                        new PaymentMethodModel("PayPal", PayPalPath, PaymentType.Paypal)
+                    };
 
-                mDropDownMenu.AddRange(models);
+                    PaymentMethods = models;
+
+                }
+                mDropDownMenu.AddRange(PaymentMethods);
+                
             }
         }
 

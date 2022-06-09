@@ -10,7 +10,7 @@
         </div>
         <div class="servicePreviewDescriptionArea">
             <h1 class="eventPreviewTitle">Event reservation</h1>
-            <span>Please enter a phone to check in to this event</span>
+            <span>Please fill the inputs to create a reservation for this event</span>
             <div class="eventPreviewInputsArea">
                 <div class="eventPreviewInputsRow">
                     <TextInput @ref="FirstNameInput"
@@ -29,7 +29,9 @@
                                ForeColor="@Gray" />
                 </div>
                 <div class="eventPreviewInputsRow">
-                    <TextInput @ref="CountryCodeInput"
+                    @if(GlobalData.UserType == UserType.Visitor)
+                    {
+                        <TextInput @ref="CountryCodeInput"
                                Hint="Country code"
                                ShowHint="true"
                                LineColor="@Lavender"
@@ -37,14 +39,15 @@
                                FocusColor="@Blue" 
                                ForeColor="@Gray" 
                                InputFormatter="@InputFormatters.IntegerFormatter"/>
-                     <TextInput @ref="PhoneNumberInput"
-                               Hint="Phone number"
-                               ShowHint="true"
-                               LineColor="@Lavender"
-                               HasLine="true"
-                               FocusColor="@Blue" 
-                               ForeColor="@Gray" 
-                               InputFormatter="@InputFormatters.IntegerFormatter"/>
+                         <TextInput @ref="PhoneNumberInput"
+                                   Hint="Phone number"
+                                   ShowHint="true"
+                                   LineColor="@Lavender"
+                                   HasLine="true"
+                                   FocusColor="@Blue" 
+                                   ForeColor="@Gray" 
+                                   InputFormatter="@InputFormatters.LongFormatter"/>
+                    }
                     <TextInput @ref="NumberOfGuestsInput"
                                Hint="Number of guests"
                                ShowHint="true"

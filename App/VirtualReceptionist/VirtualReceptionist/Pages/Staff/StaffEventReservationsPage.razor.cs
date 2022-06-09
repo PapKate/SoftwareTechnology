@@ -1,13 +1,21 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Atom;
+using Atom.Blazor.Controls;
+
+using Microsoft.AspNetCore.Components;
 
 using System.Collections.Generic;
 using System.Linq;
 
-namespace VirtualReceptionist.Pages.Staff
+using static VirtualReceptionist.Constants;
+
+namespace VirtualReceptionist
 {
     public partial class StaffEventReservationsPage
     {
         #region Private Members
+        
+        private DropDownMenu<ReservationField> dropDownMenu;
+        private TextInput mSearchTextInput;
 
         private IEnumerable<EventReservation> mEventReservations;
 
@@ -21,6 +29,8 @@ namespace VirtualReceptionist.Pages.Staff
         private double mPrice;
         private double mGiven;
         private PaymentType mPaymentMethodInputValue = PaymentType.Paypal;
+
+        private StaffEventReservationDialog mEventReservationDialog;
 
         #endregion
 
@@ -50,16 +60,92 @@ namespace VirtualReceptionist.Pages.Staff
 
         protected override void OnInitialized()
         {
+            HotelPin = GlobalData.Hotel.Pin;
             mEventReservations = EventReservation.GetEventReservations(HotelPin);
+        }
+
+        protected override void OnAfterRender(bool firstRender)
+        {
+            if(firstRender)
+            {
+                var models = new List<ReservationField>()
+                {
+                    new ReservationField()
+                    {
+                        Name = "Event",
+                        VectorSource = FireworkPath
+                    },
+                    new ReservationField()
+                    {
+                        Name = "Date",
+                        VectorSource = CalendarHeartPath
+                    },
+                    new ReservationField()
+                    {
+                        Name = "Room",
+                        VectorSource = BedEmptyPath
+                    },
+                    new ReservationField()
+                    {
+                        Name = "Participants",
+                        VectorSource = StarPath
+                    },
+                };
+
+                dropDownMenu.AddRange(models);
+                dropDownMenu.Value = models.First(x => x.Name == "Date");
+            }
         }
 
         #endregion
 
         #region Private Methods
 
-        private void ShowEventReservationForm()
+        private async void ShowEventReservationForm()
         {
             // Show form
+            var result = await DialogHelpers.ShowValidationDialogAsync<StaffEventReservationDialog>(null, null, null, x =>
+            {
+                x.Style = "padding: 0;";
+                x.NegativeFeddbackButtonConfigure = n =>
+                {
+                    n.Text = "Cancel";
+                    n.BackColor = Red;
+                    n.ForeColor = White;
+                };
+                x.PositiveFeddbackButtonConfigure = p =>
+                {
+                    p.Text = "Save";
+                    p.BackColor = Green;
+                    p.ForeColor = White;
+                };
+                x.Configure = y =>
+                {
+                    mEventReservationDialog = y;
+                };
+            });
+
+            if (result.Feedback)
+            {
+                EventReservationFormSaveButton_OnClick();
+            }
+            else
+            {
+                CancelButton_OnClick();
+            }
+        }
+
+        /// <summary>
+        /// Cancels a reservation
+        /// </summary>
+        private void CancelButton_OnClick()
+        {
+            mEvent = null;
+            mFirstNameInputValue = string.Empty;
+            mLaststNameInputValue = string.Empty;
+            mPhoneNumberInputValue = string.Empty;
+            mNumberOfGuestsInputValue = 0;
+            mCountryCodeInputValue = 0;
         }
 
         private void SortBy(string type)
@@ -75,41 +161,51 @@ namespace VirtualReceptionist.Pages.Staff
         {
             // If the text is null or empty...
             if (string.IsNullOrEmpty(text))
+            {
+                mEventReservations = EventReservation.GetEventReservations(HotelPin);
                 // Return
                 return;
+            }
 
             mEventReservations = mEventReservations.ToList()
                                 .Where(x => x.Event.Name.Contains(text) 
-                                || x.FirstName.Contains(text)
-                                || x.LastName.Contains(text)
-                                || x.Phone.PhoneNumber.Contains(text)
-                                || x.Event.Description.Contains(text)
-                                || x.Event.Facility.Name.Contains(text)
-                                || x.Event.Facility.Description.Contains(text)).ToList();
+                                    || x.FirstName.Contains(text)
+                                    || x.LastName.Contains(text)
+                                    || x.Phone.PhoneNumber.Contains(text)
+                                    || x.Event.Facility.Name.Contains(text)).ToList();
         }
 
-        private void EventReservationFormSaveButton_OnClick()
+        private async void EventReservationFormSaveButton_OnClick()
         {
+            mFirstNameInputValue = mEventReservationDialog.FirstNameInput.Text;
+            mLaststNameInputValue = mEventReservationDialog.LastNameInput.Text;
+            mPhoneNumberInputValue = mEventReservationDialog.PhoneNumberInput.Text;
+
             // If there is at least an empty input...
             if (string.IsNullOrEmpty(mFirstNameInputValue)
             || string.IsNullOrEmpty(mLaststNameInputValue)
             || string.IsNullOrEmpty(mPhoneNumberInputValue)
-            || mNumberOfGuestsInputValue == 0
-            || mCountryCodeInputValue == 0)
+            || string.IsNullOrEmpty(mEventReservationDialog.NumberOfGuestsInput.Text)
+            || string.IsNullOrEmpty(mEventReservationDialog.CountryCodeInput.Text)
+            || mEventReservationDialog.EventInput.Value == null)
             {
                 // Show the error
                 HelperMethods.ShowMessage(MessageType.Error, "Empty form input", "Please fill out every input in the form");
                 return;
             }
 
+            mNumberOfGuestsInputValue = uint.Parse(mEventReservationDialog.NumberOfGuestsInput.Text);
+            mCountryCodeInputValue = int.Parse(mEventReservationDialog.CountryCodeInput.Text);
+            mEvent = mEventReservationDialog.EventInput.Value;
+
             // The number of guests to be in the event
             uint eventCheckInGuests = 0;
 
             // For each event check in the event that is NOT a reservation add the number of guests to the eventCheckInGuests
-            mEvent.EventCheckIns.Where(x => x.IsReservation != true).ToList().ForEach(x => eventCheckInGuests += x.NumberOfguests);
+            mEvent.EventCheckIns?.Where(x => x.IsReservation != true).ToList().ForEach(x => eventCheckInGuests += x.NumberOfguests);
 
             // For each event reservation in the event add the number of guests to the eventCheckInGuests
-            mEvent.EventReservations.ToList().ForEach(x => eventCheckInGuests += x.NumberOfGuests);
+            mEvent.EventReservations?.ToList().ForEach(x => eventCheckInGuests += x.NumberOfGuests);
 
             var remainingNumberOfGuests = mEvent.MaxNumberOfGuests - eventCheckInGuests;
 
@@ -121,21 +217,55 @@ namespace VirtualReceptionist.Pages.Staff
                 return;
             }
 
+            mPrice = HelperMethods.CalculateTotalPrice(mEvent.Price, mNumberOfGuestsInputValue);
+
+            // Show form
+            var result = await DialogHelpers.ShowValidationDialogAsync<PaymentDialog>("Event payment", "Please choose a payment method.", CashPath, x =>
+            {
+                x.NegativeFeddbackButtonConfigure = n =>
+                {
+                    n.Text = "Cancel";
+                    n.BackColor = Red;
+                    n.ForeColor = White;
+                };
+                x.PositiveFeddbackButtonConfigure = p =>
+                {
+                    p.Text = "Submit";
+                    p.BackColor = Green;
+                    p.ForeColor = White;
+                };
+                x.Configure = y =>
+                {
+                    y.PaymentMethods = new List<PaymentMethodModel>()
+                    {
+                        new PaymentMethodModel("Visa", VisaPath, PaymentType.Visa),
+                        new PaymentMethodModel("MasterCard", MasterCardPath, PaymentType.Mastercard),
+                        new PaymentMethodModel("PayPal", PayPalPath, PaymentType.Paypal),
+                        new PaymentMethodModel("Cash", CashPath, PaymentType.Cash),
+                    };
+                };
+            });
+
+            if (!result.Feedback)
+                return;
+
             // Show payments form
-            // -> PaymentsFormOKButton_OnClick()
-            return;
+            PaymentsFormOKButton_OnClick();
         }
 
-        private void PaymentsFormOKButton_OnClick()
+        private async void PaymentsFormOKButton_OnClick()
         {
             if (mPaymentMethodInputValue == PaymentType.Cash)
             {
-                var change = HelperMethods.SubmitPaymentWithCash(mPrice, mGiven);
-                CreateEventReservation();
+                var result = await HelperMethods.SubmitPaymentWithCash(mPrice, mGiven);
+
+                if (result)
+                    CreateEventReservation();
+
                 return;
             }
 
-            HelperMethods.SubmitPaymentWithPOS();
+            GoToPOSPayment();
         }
 
         /// <summary>
@@ -161,15 +291,16 @@ namespace VirtualReceptionist.Pages.Staff
         {
             var phone = new Phone() { CountryCode = mCountryCodeInputValue, PhoneNumber = mPhoneNumberInputValue };
 
-            var hotel = Data.Hotels.First(x => x.Floors.Any(x => x.Facilities.Any(x => x.Events.Contains(mEvent))));
-
-            EventReservation.CreateEventReservation(mFirstNameInputValue, mLaststNameInputValue, phone, mNumberOfGuestsInputValue, false, mEvent, hotel.Pin);
+            EventReservation.CreateEventReservation(mFirstNameInputValue, mLaststNameInputValue, phone, mNumberOfGuestsInputValue, false, mEvent, HotelPin);
 
             // Show the message
             HelperMethods.ShowMessage(MessageType.Information, "Reservation created", "Your reservation has been created. Thank you!");
 
             // Sends the text to the phone
             HelperMethods.SendPhoneText(phone, $"Your reservation has been confirmed. Thank you from Sahara Resort!");
+
+            mEventReservations = EventReservation.GetEventReservations(HotelPin).ToList();
+            StateHasChanged();
         }
 
         private void EventReservationForm_Cancel()
@@ -181,6 +312,29 @@ namespace VirtualReceptionist.Pages.Staff
             mEvent = null;
             mGiven = 0;
             mPrice = 0;
+        }
+
+        #endregion
+    }
+
+    public class ReservationField
+    {
+        #region Public Properties
+
+        public string Name { get; set; }
+
+        public VectorSource VectorSource { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public ReservationField() : base()
+        {
+
         }
 
         #endregion

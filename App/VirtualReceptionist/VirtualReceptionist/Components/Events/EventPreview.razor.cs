@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Atom.Blazor.Controls;
+
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace VirtualReceptionist
@@ -34,7 +37,7 @@ namespace VirtualReceptionist
         /// </summary>
         [Parameter]
         public bool IsPreview { get; set; } = false;
-
+        
         #endregion
 
         #region Constructors
@@ -72,6 +75,20 @@ namespace VirtualReceptionist
                 return;
             }
             await OnClick.InvokeAsync(Model);
+        }
+
+        protected uint CalculateNumberOfGuests()
+        {
+            // The number of guests to be in the event
+            uint eventCheckInGuests = 0;
+
+            // For each event check in the event that is NOT a reservation add the number of guests to the eventCheckInGuests
+            Model.EventCheckIns?.Where(x => x.IsReservation != true).ToList().ForEach(x => eventCheckInGuests += x.NumberOfguests);
+
+            // For each event reservation in the event add the number of guests to the eventCheckInGuests
+            Model.EventReservations?.ToList().ForEach(x => eventCheckInGuests += x.NumberOfGuests);
+
+            return eventCheckInGuests;
         }
 
         #endregion

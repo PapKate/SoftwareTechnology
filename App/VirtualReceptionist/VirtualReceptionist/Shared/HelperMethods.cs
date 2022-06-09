@@ -1,7 +1,11 @@
-﻿using Atom.Blazor.Controls;
+﻿using Atom;
+using Atom.Blazor.Controls;
 
 using System;
 using System.Linq;
+using System.Threading.Tasks;
+
+using static VirtualReceptionist.Constants;
 
 namespace VirtualReceptionist
 {
@@ -101,14 +105,29 @@ namespace VirtualReceptionist
             return price * multiplier;
         }
 
-        public static double SubmitPaymentWithCash(double price, double given)
+        public static async Task<bool> SubmitPaymentWithCash(double price, double given)
         {
-            return given - price;
-        }
+            var result = await DialogHelpers.ShowValidationDialogAsync<PaymentWithCashDialog>("Payment with cash", $"The total price is {price.ToLocalizedCurrency()}.Pleas enter the received amount.", CashPath, x => 
+            {
+                x.NegativeFeddbackButtonConfigure = n =>
+                {
+                    n.Text = "Cancel";
+                    n.BackColor = Red;
+                    n.ForeColor = White;
+                };
+                x.PositiveFeddbackButtonConfigure = p =>
+                {
+                    p.Text = "Submit";
+                    p.BackColor = Green;
+                    p.ForeColor = White;
+                };
+                x.Configure = y =>
+                {
+                    y.Price = price;
+                };
+            });
 
-        public static void SubmitPaymentWithPOS()
-        {
-
+            return result.Feedback;
         }
 
         #endregion

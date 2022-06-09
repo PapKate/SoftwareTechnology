@@ -1,11 +1,14 @@
-﻿@using static VirtualReceptionist.Constants
+﻿@inherits BaseControl
+
+@using static VirtualReceptionist.Constants
 
 @namespace VirtualReceptionist
 
 @if(Model != null)
 {
     <div class="serviceContainer" style="@(IsPreview ? string.Empty : $"border-radius: 8px; filter: drop-shadow(1px 1px 3px #{Lavender});") " 
-         @onclick="EventClicked" @oncontextmenu="EventClicked" @oncontextmenu:preventDefault="true">
+         @onclick="EventClicked" @oncontextmenu:preventDefault="@(ContextMenuRef != null ? true : false )"
+         @oncontextmenu="@OnContextMenu">
     
         <div class="serviceImage serviceDefaultIcon" style="@mDefaultIconStyle">
             <div class="serviceImageSVG" style="height:88%; width:fit-content;">
@@ -38,14 +41,16 @@
                                     <VectorIcon Color="@White" VectorSource="@LockPath" />
                                 </div>
                             }
-                            <span class="serviceCapacity serviceText "> @(Model.EventCheckIns?.Count() ?? 0) / @Model.MaxNumberOfGuests </span>
+                            <span class="serviceCapacity serviceText "> @(CalculateNumberOfGuests()) / @Model.MaxNumberOfGuests </span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 }
+@ChildContent
 
 
 <style>

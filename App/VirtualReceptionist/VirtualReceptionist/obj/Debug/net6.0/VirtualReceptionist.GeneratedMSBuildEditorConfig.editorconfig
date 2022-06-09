@@ -30,8 +30,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEaWFsb2dzXEV2ZW50UmVzZXJ2YXRpb25EaWFsb2cucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Components/Dialogs/FacilityFormDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEaWFsb2dzXEZhY2lsaXR5Rm9ybURpYWxvZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Components/Dialogs/PaymentDialog.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEaWFsb2dzXFBheW1lbnREaWFsb2cucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Components/Dialogs/PaymentWithCashDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEaWFsb2dzXFBheW1lbnRXaXRoQ2FzaERpYWxvZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Components/Dialogs/StaffEventReservationDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEaWFsb2dzXFN0YWZmRXZlbnRSZXNlcnZhdGlvbkRpYWxvZy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Components/Events/EventPreview.razor]
@@ -86,8 +98,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhZmZcU3RhZmZFdmVudENoZWNrSW5zUGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Pages/Staff/StaffeventCreationPage.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhZmZcU3RhZmZldmVudENyZWF0aW9uUGFnZS5yYXpvcg==
+[C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Pages/Staff/StaffEventCreationPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhZmZcU3RhZmZFdmVudENyZWF0aW9uUGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/PapKate/Documents/CEID/ΤεχνολογίαΛογισμικού/SoftwareTechnology/App/VirtualReceptionist/VirtualReceptionist/Pages/Staff/StaffEventReservationsPage.razor]

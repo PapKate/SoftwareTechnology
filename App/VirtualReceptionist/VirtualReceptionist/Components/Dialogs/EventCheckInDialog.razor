@@ -1,5 +1,148 @@
-﻿<h3>EventCheckInDialog</h3>
+﻿@using static VirtualReceptionist.Constants
 
-@code {
+@namespace VirtualReceptionist
 
-}
+
+<div class="servicePreviewContainer">
+    @if(Model != null)
+    {
+        <div class="servicePreviewSeivceComponentArea">
+            <EventPreview Model="@Model" IsPreview="true" />
+        </div>
+        <div class="servicePreviewDescriptionArea">
+            <h1 class="eventPreviewTitle">Event check in</h1>
+            <span>Please enter a phone to check in to this event</span>
+            <div class="eventPreviewInputsArea">
+                <div class="eventPreviewInputsRow">
+                    @if(Model.IsPrivate)
+                    {
+                             <TextInput @ref="LockPinInput"
+                               Hint="Lock PIN"
+                               ShowHint="true"
+                               LineColor="@Lavender"
+                               HasLine="true"
+                               FocusColor="@Blue" 
+                               ForeColor="@Gray" 
+                               VectorSource="@LockPath"
+                               InputFormatter="@InputFormatters.IntegerFormatter"/>
+                    }
+                    else
+                    {
+                        <CheckBox @ref="IsReservationCheckbox"
+                                  FontWeight="400"
+                                  CheckIndicatorContainerBorderRedius="2px"
+                                  CheckIndicatorContainerBorderThickness="2px"
+                                  CheckIndicatorContainerColor="@Blue"
+                                  CheckIndicatorContainerSize="24"
+                                  Text="Is reservation"
+                                  ValueChanged="((e) => mIsChecked = e.NewValue)"/>
+                    }
+                </div>
+                <div class="eventPreviewInputsRow">
+                    <TextInput @ref="CountryCodeInput"
+                               Hint="Country code"
+                               ShowHint="true"
+                               LineColor="@Lavender"
+                               HasLine="true"
+                               FocusColor="@Blue" 
+                               ForeColor="@Gray" 
+                               InputFormatter="@InputFormatters.IntegerFormatter"/>
+                     <TextInput @ref="PhoneNumberInput"
+                               Hint="Phone number"
+                               ShowHint="true"
+                               LineColor="@Lavender"
+                               HasLine="true"
+                               FocusColor="@Blue" 
+                               ForeColor="@Gray" 
+                               InputFormatter="@InputFormatters.LongFormatter"/>
+                    @if(!mIsChecked)
+                    {
+                         <TextInput @ref="NumberOfGuestsInput"
+                               Hint="Number of guests"
+                               ShowHint="true"
+                               LineColor="@Lavender"
+                               HasLine="true"
+                               FocusColor="@Blue" 
+                               ForeColor="@Gray"
+                               InputFormatter="@InputFormatters.IntegerFormatter"/>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    p {
+        margin: 0;
+    }
+
+    .servicePreviewContainer {
+        width: 44vw;
+        position:relative;
+        display: grid;
+        grid-auto-rows: minmax(2em, auto);
+        grid-template-columns: 100%;
+        overflow-y: auto;
+    }
+
+    .servicePreviewSeivceComponentArea {
+        position: relative;
+        width: 100%;
+    }
+
+    .servicePreviewDescriptionArea {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 1em;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+    }
+
+    .eventPreviewTitle{
+        font-family: Calibri,sans-serif;
+        font-weight: 600;
+        color: #@Blue;
+    }
+
+    .eventPreviewInputsArea{
+        position:relative;
+        width: 100%;
+        padding: 1em 2em;
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+        align-items:center;
+        justify-content: center;
+    }
+
+    .eventPreviewInputsRow{
+        position:relative;
+        width: 100%;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+        align-items:center;
+        gap: 2em;
+    }
+
+    .dialogButtonsArea {
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        gap: 2em;
+        justify-content: space-evenly;
+        align-items: center;
+        padding-bottom: 2em;
+    }
+
+    .dialogContent{
+        overflow-y: scroll;
+    }
+
+</style>

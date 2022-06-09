@@ -2,6 +2,7 @@
 
 using Microsoft.AspNetCore.Components;
 
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace VirtualReceptionist
@@ -70,10 +71,27 @@ namespace VirtualReceptionist
         /// <returns></returns>
         private async void EnterClicked()
         {
+            if (!Data.Customers.Any(x => x.Pin.Code.ToString() == mText))
+            {
+                HelperMethods.ShowErrorMessage("Invalid PIN", "There is no customer with pin the given pin. PLease try again.");
+                // Removes the input text
+                mText = string.Empty;
+                return;
+            }
             
+            if(Data.Customers.Any(x => x.Pin.Code.ToString() == mText && x.Pin.IsActive != true))
+            {
+                HelperMethods.ShowErrorMessage("Inactive PIN", "The pin is not active anymore. PLease try again.");
+                // Removes the input text
+                mText = string.Empty;
+                return;
+            }
+            
+            var customer = Data.Customers.First(x => x.Pin.Code.ToString() == mText);
             // Removes the input text
             mText = string.Empty;
 
+            await OnSuccessfulLogIn.InvokeAsync(customer);
         }
 
         #endregion
@@ -84,7 +102,7 @@ namespace VirtualReceptionist
         /// Fires when a successful login occurs
         /// </summary>
         [Parameter]
-        public EventCallback<bool> OnSuccessfulLogIn { get; set; }
+        public EventCallback<CustomerUser> OnSuccessfulLogIn { get; set; }
 
         #endregion
     }

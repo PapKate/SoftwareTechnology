@@ -1,6 +1,10 @@
 ﻿
 @page "/staffEventReservations"
 
+@using static VirtualReceptionist.Constants
+
+@namespace VirtualReceptionist
+
 <div class="headerWrapper">
     <Header HotelName="Sahara resort" />
 </div>
@@ -11,10 +15,178 @@
         <SideMenu />
         
         <div class="userPageContent">
-            <h3>StaffEventReservationsPage</h3>
+
+            <div class="searchAndSortArea">
+                <div class="searchInput">
+                    <TextInput @ref="mSearchTextInput"
+                               VectorSource="@MagnifyPath" 
+                               Hint="Search an event reservation..."
+                               HasLine="false"
+                               FocusColor="@Gray"
+                               LineColor="@Lavender"
+                               ForeColor="@Gray"
+                               BackColor="@White"
+                               BorderRadius="8px 0 0 8px"/>
+
+                    <div style=" width: 20%;">
+                        <TextButton Text="Search"
+                                    BackColor="@Lavender"
+                                    FontWeight="600"
+                                    ForeColor="@White"
+                                    BorderRadius="0px 8px 8px 0px"
+                                    OnClick="@(() => Search(mSearchTextInput.Text))"/>
+                    </div>
+                </div>
+               
+
+                <div class="sortByArea">
+                    <span style="font-weight:600;">Sort by:</span>
+
+                    <div style="width: 250px; height:3em; position:relative;">
+
+                        <DropDownMenu @ref="@dropDownMenu" 
+                                      Id="dropDownMenu"
+                                      TItem="@ReservationField"
+                                      TextSelector="@(x => x.Name)" 
+                                      VectorSourceSelector="@(x => x.VectorSource)"
+                                      ButtonBoxShadow="@Atom.Blazor.Personalization.BoxShadow"
+                                      ButtonBorderRadius="8px"
+                                      ButtonBackground="@White"
+                                      ButtonForeground="@Gray"
+                                      BoxShadow="@Atom.Blazor.Personalization.BoxShadow"
+                                      Background="@White"
+                                      Foreground="@Lavender"
+                                      BorderRadius="8px"
+                                      IsSelectedBackColor="@White"
+                                      IsSelectedForeColor="@Lavender"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="datagridArea">
+                <span class="dataGridHeaderText">Name</span>
+                <span class="dataGridHeaderText">Date and Time</span>
+                <span class="dataGridHeaderText">First name</span>
+                <span class="dataGridHeaderText">Last name</span>
+                <span class="dataGridHeaderText">Guests</span>
+                
+                @foreach(var reservation in mEventReservations)
+                {
+                     <div>
+                        <span>@reservation.Event.Name</span>
+                        <Separator Color="@Lavender" Margin="4px 0" />
+                    </div>
+                    <div>
+                        <span>@reservation.Event.DateStart.ToString("dd/MM/yyyy HH:mm tt")</span>
+                        <Separator Color="@Lavender" Margin="4px 0" />
+                    </div>
+                     <div>
+                        <span>@reservation.FirstName</span>
+                        <Separator Color="@Lavender" Margin="4px 0" />
+                    </div>
+                    <div>
+                        <span>@reservation.LastName</span>
+                        <Separator Color="@Lavender" Margin="4px 0" />
+                    </div>
+                    <div>
+                        <span>@reservation.NumberOfGuests</span>
+                        <Separator Color="@Lavender" Margin="4px 0" />
+                    </div>
+                }
+                
+            </div>
+               
+            <div class="addReservationButton">
+                <IconButton BackColor="@Lavender" 
+                            ForeColor="@White"
+                            VectorSource="IconPaths.PlusPath" 
+                            BorderRadius="50%"
+                            BoxShadow="@Atom.Blazor.Personalization.BoxShadow" 
+                            OnClick="@ShowEventReservationForm"/>
+            </div>
         </div>
 
     </div>
 </div>
+
+<DialogsContainer/>
+
+
+<style>
+
+    .searchAndSortArea {
+        width: 100%;
+        height: 120px;
+        padding: 2em 4em;
+        display: flex;
+        flex-direction: row;
+        gap: 2em;
+        align-items: center;
+        justify-content: space-between;
+        font-family: Calibri,sans-serif;
+        color: #@Gray;
+    }
+
+
+    .searchInput{
+        position:relative;
+        width: 52%;
+        height: 100%;
+        box-shadow: @Atom.Blazor.Personalization.BoxShadow;
+        display: flex;
+        flex-direction:row;
+        border-radius: 8px;
+    }
+
+    .sortByArea {
+        position:relative;
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .addReservationButton{
+        position: fixed;
+        bottom: 2em;
+        right: 2em;
+        width: 52px;
+        height: 52px;
+    }
+
+    .searchMenuAdditionalData {
+        height: 100%;
+        display: grid;
+        grid-template-columns: 24px auto 24px 24px;
+        align-items: center;
+        gap: 12px;
+        padding-right: 12px;
+        width: 100%;
+    }
+
+    .datagridArea{
+        position:relative;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 2fr 3fr 2fr 2fr 1fr;
+        grid-auto-rows: 60px;
+        color: #@Gray;
+        font-size: 24px;
+        font-family: Calibri,sans-serif;
+        text-align: center;
+    }
+
+    .dataGridHeaderText{
+        font-size: 28px;
+        font-weight: 600;
+        color: #@White;
+        background-color: #@Lavender;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+</style>
 
 
