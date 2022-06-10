@@ -1,0 +1,224 @@
+﻿@page "/staffEventCreation"
+
+@using static VirtualReceptionist.Constants
+
+@namespace VirtualReceptionist
+
+<div class="headerWrapper">
+    <Header HotelName="Sahara resort" />
+</div>
+
+<div class="pageWrapper">
+    <div class="userPageWrapper">
+
+        <SideMenu />
+        
+        <div class="userPageContent" style="background-color:#@PalePurple;">
+
+            <div class="formContainer">
+                <h1 style="font-weight: 600; text-align: center;">Event Form</h1>
+
+                <div class="formTextInputs">
+                    <TextInput @ref="NameInput"
+                               Hint="Name"
+                               ShowHint="true"
+                               LineColor="@Lavender"
+                               HasLine="true"
+                               FocusColor="@Blue" 
+                               ForeColor="@Gray" />
+
+                    <DateTimePicker @ref="DateStartInput"
+                                Background="@White"
+                                 Foreground="@Gray"
+                                 ButtonBackground="@Lavender"
+                                  HourHandColor="@Lavender"
+                                  IsSelectedButtonBackColor="@Lavender" 
+                                  MinuteHandColor="@PalePurple"/>
+
+                    <TimeSpanInput @ref="DurationInput" Text="Duration"
+                               HasLine="true"
+                               LineColor="@Lavender"
+                               FocusColor="@Blue" 
+                               ForeColor="@Gray" />
+
+                    <TextInput @ref="ImageInput"
+                               Hint="Image"
+                               ShowHint="true"
+                               LineColor="@Lavender"
+                               HasLine="true"
+                               FocusColor="@Blue" 
+                               ForeColor="@Gray" />
+
+                    
+
+                    <NumericInput @ref="CapacityInput"
+                                  ForeColor="@Gray"
+                                  HasLine="true"
+                                  FocusColor="@Blue"
+                                  LineColor="@Lavender"
+                                  ShowHint="true"
+                                  BorderColor="@Lavender"
+                                  Hint="Capacity"/>
+
+                     <NumericInput @ref="PriceInput"
+                                ForeColor="@Gray"
+                                HasLine="true"
+                                FocusColor="@Blue"
+                                LineColor="@Lavender"
+                                ShowHint="true"
+                                BorderColor="@Lavender"
+                                Hint="Price"/>
+
+                </div>
+
+                <div style="height: 40px; width: 100%; position:relative;">
+                    <SearchMenuInput @ref="@LocationInput" 
+                            TItem="@Facility"
+                            Foreground="@Gray"
+                            Id="imageSearchMenu" />
+                </div>
+
+                <div class="formDescriptionTextInput" style="height:40px;">
+                    <TextInput @ref="DescriptionInput"
+                               Hint="Description"
+                               ShowHint="true"
+                               LineColor="@Lavender"
+                               HasLine="true"
+                               FocusColor="@Blue" 
+                               ForeColor="@Gray" />
+                </div>
+                <div>
+                    <div class="formVIPInput" style="height: 40px">
+                        <CheckBox @ref="IsPrivateInput"
+                                    FontWeight="400"
+                                    FontSize="20px"
+                                    CheckIndicatorContainerBorderRedius="2px"
+                                    CheckIndicatorContainerBorderThickness="2px"
+                                    CheckIndicatorContainerColor="@Lavender"
+                                    CheckIndicatorContainerSize="20"
+                                    Text="Is private"
+                                    ValueChanged="((e) => mIsChecked = e.NewValue)"/>
+
+                   
+                    </div>
+
+                    @if(mIsChecked)
+                    {
+                         <div class="formPinInputs">
+                            <TextInput @ref="PinInput"
+                                       Hint="Event PIN"
+                                       ShowHint="true"
+                                       LineColor="@Lavender"
+                                       HasLine="true"
+                                       FocusColor="@Blue" 
+                                       ForeColor="@Gray"
+                                       InputType="TextInputType.Password"/>
+
+                            <TextInput @ref="ConfirmPinInput"
+                                       Hint="Confirm PIN"
+                                       ShowHint="true"
+                                       LineColor="@Lavender"
+                                       HasLine="true"
+                                       FocusColor="@Blue" 
+                                       ForeColor="@Gray"
+                                       InputType="TextInputType.Password"/>
+                        </div>
+                    }
+                </div>
+                
+               
+
+                <div class="formButtons">
+                    <div class="dialogButtonsArea">
+                        <div style="width: 32%; height: 3rem">
+                            <TextButton BackColor="@Red"
+                                           ForeColor="@White"
+                                           BorderRadius="4px"
+                                           Text="Cancel"
+                                           FontWeight="600"
+                                           OnClick="@ClearData">
+                            </TextButton>
+                        </div>
+                        <div style="width: 32%; height: 3rem">
+                            <TextButton BackColor="@Green"
+                                           ForeColor="@White"
+                                           BorderRadius="4px"
+                                           Text="Save"
+                                           FontWeight="600"
+                                           OnClick="@EventFormSaveButton_OnClick">
+                            </TextButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<DialogsContainer/>
+
+<style>
+
+    .formContainer {
+        height: calc(100vh - 4rem);
+        top: 0;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 72vw;
+        margin: auto;
+        gap: 4em;
+        padding: 2em 4em;
+        font-family: Calibri,sans-serif;
+        color: #@Blue;
+        background-color:#@White;
+        box-shadow: @Atom.Blazor.Personalization.BoxShadow;
+    }
+
+    .formTextInputs{
+        position:relative;
+        width:100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 44px;
+        gap: 4em;
+    }
+
+    .formPinInputs{
+        position:relative;
+        width:100%;
+        height: 40px;
+        display: flex;
+        flex-direction:row;
+        gap: 4em;
+    }
+
+    .searchMenuAdditionalData {
+        height: 100%;
+        display: grid;
+        grid-template-columns: 24px auto 24px 24px;
+        align-items: center;
+        gap: 12px;
+        padding-right: 12px;
+        width: 100%;
+    }
+
+    .formButtons{
+       position: absolute;
+        bottom: 1em;
+        width: 88%;
+    }
+
+    .dialogButtonsArea {
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        gap: 6em;
+        justify-content: center;
+        align-items: center;
+        padding: 1em;
+    }
+
+</style>
