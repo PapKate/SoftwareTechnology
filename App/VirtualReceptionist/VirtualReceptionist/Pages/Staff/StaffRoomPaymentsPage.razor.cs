@@ -130,7 +130,7 @@ namespace VirtualReceptionist
         /// </summary>
         private void GoToPOSPayment()
         {
-            var result = HelperMethods.ThirdPartyPayment(mPaymentMethodInputValue, mPrice);
+            var result = HelperMethods.SubmitPaymentWithPOS(mPaymentMethodInputValue, mPrice);
 
             // If the transaction was NOT successful
             if (!result)

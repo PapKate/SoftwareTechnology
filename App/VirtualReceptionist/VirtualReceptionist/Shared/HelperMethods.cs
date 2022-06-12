@@ -130,6 +130,11 @@ namespace VirtualReceptionist
             return result.Feedback;
         }
 
+        public static bool SubmitPaymentWithPOS(PaymentType type, double price)
+        {
+            return ThirdPartyPayment(type, price);
+        }
+
         #endregion
     }
 }
